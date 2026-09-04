@@ -125,3 +125,58 @@ PHASE GATE: PASS
 
 ---
 *Next: Phase 2 — System Requirements (requires team approval).*
+
+---
+
+## PHASE 2 — SYSTEM REQUIREMENTS
+
+```
+PHASE:     2 — System Requirements
+STATUS:    COMPLETE (awaiting team approval to begin Phase 3)
+
+COMPLETED:
+- docs/system-requirements.md: users/stakeholders (U1-U5), inputs (IN-1..IN-9),
+  outputs (OUT-1..OUT-10), functional requirements (FR-1..FR-40 with MUST/SHOULD/COULD
+  priorities), non-functional requirements (NFR-1..NFR-10), scenarios (SC-1..SC-8),
+  constraints (C-1..C-7), success metrics + acceptance criteria, requirements->phase map
+- All requirements traced to Phase 0 decisions (scope, stack, Bharati-Maitri scenario,
+  honesty rules) and Phase 1 findings (baselines mandatory, iceberg presence-gap)
+
+INCOMPLETE:
+- None for Phase 2 scope (acceptance test matrix is built/tested from Phase 4 onward)
+
+FILES CREATED:
+- docs/system-requirements.md
+
+FILES MODIFIED:
+- docs/phase-gate-log.md (this entry)
+
+TESTS:
+- None (requirements phase; acceptance criteria defined in section 9 for later phases)
+
+RESULTS:
+- 40 functional requirements, 8 scenarios (incl. Bharati-Maitri demo SC-1 and failure
+  scenarios SC-4..SC-8), 10 non-functional requirements, 10 acceptance areas
+
+PROBLEMS:
+- None
+
+DECISIONS:
+- Demo scenario locked as Bharati-Maitri corridor (SC-1), mirroring Mishra et al. 2021
+  benchmark where data allow
+- No LLM dependency for explanation engine in MVP (FR-29 = COULD, template-based)
+- Data footprint rule: heavy data downloaded by script, never committed (NFR-7)
+
+ASSUMPTIONS:
+- Vessel profile modeled and flagged as modeled (IN-6); editable per FR-19
+- Grid sizes for route domain ~10^4-10^5 cells bound NFR-1 performance targets
+
+VALIDATION:
+- Every MUST requirement maps to at least one phase and one acceptance criterion;
+  cross-checked against Phase 0 objectives table and Phase 1 gap analysis
+
+PHASE GATE: PASS
+```
+
+---
+*Next: Phase 3 — Data Strategy (requires team approval).*
