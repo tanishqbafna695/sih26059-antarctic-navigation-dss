@@ -58,3 +58,70 @@ PHASE GATE: PASS
 
 ---
 *Next: Phase 1 — Existing Solutions & Gap Analysis (requires team approval).*
+
+---
+
+## PHASE 1 — EXISTING SOLUTIONS & GAP ANALYSIS
+
+```
+PHASE:     1 — Existing Solutions & Gap Analysis
+STATUS:    COMPLETE (awaiting team approval to begin Phase 2)
+
+COMPLETED:
+- Web research with primary sources for: IcySea (Drift+Noise/ESA InCubed + operator
+  interview), BAS PolarRoute/Logist (arXiv paper + BAS + BAS-authored WWF article),
+  DESIDE (DestinE + Polar View pages), Polar View Antarctic (polarview.aq + BAS),
+  academic Antarctic routing (Mishra 2021 Bharati-Maitri; Gupta 2019 Web-GIS; NRC
+  2023 review), and iceberg-monitoring reality (Arctic Institute 2026 review)
+- docs/existing-solutions-gap.md: verified system profiles, comparison matrix
+  (VERIFIED / partial / INFERRED legend), defensible gap statement, canned
+  "Why not IcySea/PolarRoute/DESIDE" defences, architecture implications, sources
+- docs/innovation-claims.md: 24-row ledger with VERIFIED / INFERRED / PROPOSED /
+  NOT YET VALIDATED classes + claim-use discipline rules + positioning statement
+
+INCOMPLETE:
+- None for Phase 1 scope (competitor re-verification is a standing task before judging)
+
+FILES CREATED:
+- docs/existing-solutions-gap.md
+- docs/innovation-claims.md
+
+FILES MODIFIED:
+- docs/phase-gate-log.md (this entry)
+
+TESTS:
+- None (research/documentation phase; no implementation code)
+
+RESULTS:
+- Gap identified: no surveyed public system demonstrates the full Antarctic decision
+  layer (probabilistic inputs incl. iceberg trajectory -> vessel hazard -> multi-route
+  trade-offs -> explained recommendation -> dynamic re-routing)
+- Key nuance: IcySea route optimisation still in development (2024 operator interview);
+  DESIDE is Arctic/Baltic-first; Polar View provides iceberg presence, not trajectory
+  probability; PolarRoute is research-grade vessel-aware routing
+
+PROBLEMS:
+- BAS project page returned no readable text (worked around with BAS-authored WWF
+  article + Zenodo record + arXiv paper)
+- ScienceDirect blocked direct fetch (worked around with indexed record details)
+
+DECISIONS:
+- Route core = graph search over cost field (matches academic practice); differentiator
+  is the decision layer, not the search algorithm
+- Iceberg hazard baseline to beat = operational presence-based products (NAVAREA grids)
+- Bharati-Maitri is our natural NCPOR demo scenario and academic benchmark
+- Competitor "absence" claims recorded as INFERRED, never VERIFIED fact
+
+ASSUMPTIONS:
+- Public-material review bounded to sources listed in the gap doc (accessed 2026-09-04)
+- Competitor products may have evolved beyond public material; re-verify before judging
+
+VALIDATION:
+- Matrix rows cross-checked against the claims in docs/innovation-claims.md (#1-18)
+- Claims disciplined per master brief sections 17-19, 24, 38-39
+
+PHASE GATE: PASS
+```
+
+---
+*Next: Phase 2 — System Requirements (requires team approval).*
