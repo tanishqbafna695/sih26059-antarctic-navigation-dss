@@ -53,6 +53,7 @@ scripts/               Reproducibility scripts (data fetch, training, demo)
 | `docs/existing-solutions-gap.md`       | Verified competitor analysis and gap               | 1     |
 | `docs/innovation-claims.md`            | Claim ledger with evidence and status              | 1+    |
 | `docs/data-strategy.md`                | Dataset selection, licenses, preprocessing         | 3     |
+| `docs/account-setup.md`                | Free-account registration + real-data download     | 4     |
 | `docs/judge-questions.md`              | Evidence-backed judge defense                      | 21    |
 | `docs/sih-winning-strategy.md`         | Winning strategy                                   | 21    |
 | `docs/competitive-defense.md`          | "Why not IcySea / PolarRoute" defense              | 21    |
