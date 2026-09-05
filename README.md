@@ -57,6 +57,12 @@ scripts/               Reproducibility scripts (data fetch, training, demo)
 | `docs/sih-winning-strategy.md`         | Winning strategy                                   | 21    |
 | `docs/competitive-defense.md`          | "Why not IcySea / PolarRoute" defense              | 21    |
 
+## Zero-cost constraint
+
+This project is built and demonstrated **entirely without spending money**: free/openly
+licensed public datasets only, an open-source stack, no paid APIs or services, and a free-tier
+or fully local demo. Every phase gate checks compliance (see `docs/project-definition.md` §7.4).
+
 ## Working method
 
 The project runs through strict phases (0–21). Each phase ends with a gate report in

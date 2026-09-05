@@ -147,6 +147,16 @@ Routing distinguishes **hard constraints** (route rejected: capability exceeded)
 constraints** (cost increases: moderate ice, weather). High uncertainty must influence route
 choice (never blindly prefer lowest expected risk with very high uncertainty).
 
+### 7.4 Zero-cost constraint (hard, team-approved)
+
+The project must be built and demonstrated **entirely without spending money**:
+
+- **Datasets:** free, openly licensed public products only (e.g., OSI-SAF, NSIDC, ERA5, Copernicus); no paid subscriptions or data purchases.
+- **Software:** open-source stack only (Python, FastAPI, React, MapLibre, …); no paid APIs, SDKs, model services, or SaaS tiers.
+- **Compute:** local machines and free tiers only; models kept small enough to train and demo offline.
+- **Hosting/deployment:** free tiers or a fully local demo; no paid cloud spend. GitHub free tier is the public home for this repo.
+- **Compliance check:** every phase gate verifies zero-cost compliance; any paid option is rejected and replaced with a free equivalent.
+
 ---
 
 ## 8. Risks
@@ -161,6 +171,7 @@ choice (never blindly prefer lowest expected risk with very high uncertainty).
 | 6 | Weak judge defense ("why not IcySea/PolarRoute") | Phase 1 verified comparison matrix; `docs/competitive-defense.md` |
 | 7 | Fabricated or unverifiable metrics | No-fake-completion rule; every metric traced to a run in the gate log |
 | 8 | Team skill spread (ML/geo/frontend) | Modular phases; baseline-first model progression; early spike in Phase 3/4 |
+| 9 | Cost creep (paid datasets/APIs/hosting/compute) | Zero-cost constraint (§7.4) checked at every gate; free/open substitutes only |
 
 ---
 
@@ -220,3 +231,4 @@ multi-objective optimization for routing; React + TypeScript + MapLibre frontend
 | Data strategy | Real public data + one curated scenario; physics-informed synthetic iceberg tracks where labeled data is absent (always labeled as synthetic) |
 | Repo layout | README/docs/data/backend/frontend/models/tests/configs/scripts (no top-level `src/`; backend+frontend split covers it) |
 | Git | Meaningful commits per phase milestone |
+| Zero-cost build | Hard constraint: free/open datasets, open-source stack, free-tier or fully local demo (§7.4) |
