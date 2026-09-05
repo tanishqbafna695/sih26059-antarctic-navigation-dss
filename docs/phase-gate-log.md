@@ -180,3 +180,65 @@ PHASE GATE: PASS
 
 ---
 *Next: Phase 3 — Data Strategy (requires team approval).*
+
+---
+
+## PHASE 3 — DATA STRATEGY
+
+```
+PHASE:     3 — Data Strategy
+STATUS:    COMPLETE (awaiting team approval to begin Phase 4)
+
+COMPLETED:
+- Verified (2026-09-05) free-access, open-license sources for every domain: OSI SAF SIC
+  (OSI-450/OSI-430-b, CC-BY-4.0), AMSR2 NRT (OSI-408-a), sea-ice drift (OSI-405-c/d),
+  ERA5 forcing + waves (CDS, free incl. commercial), GLORYS12 ocean reanalysis
+  (CMEMS, 1/12 deg, 1993-present), NSIDC CDR fallback, BYU/NIC + SCAR + US NIC
+  iceberg data, GEBCO 2023 (CC-BY-4.0)
+- docs/data-strategy.md: 16-product catalog with resolutions, coverage, access, licenses;
+  per-domain rationale; Bharati-Maitri curated scenario bundle (box 55-75S/0-95E,
+  Dec 2019-Mar 2020 primary, Dec 2022-Mar 2023 extreme) with ~2-4 GB footprint;
+  storage layout (raw/processed/scenarios/manifests), scripted fetch plan,
+  attribution requirements, public-repo hygiene, provenance requirements (brief §23),
+  scope control, assumptions table, references
+
+INCOMPLETE:
+- None for Phase 3 scope (downloads + verification happen in Phase 4)
+
+FILES CREATED:
+- docs/data-strategy.md
+
+FILES MODIFIED:
+- docs/phase-gate-log.md (this entry)
+
+TESTS:
+- None (selection/documentation phase; download + QC scripts land in Phase 4)
+
+RESULTS:
+- Zero-cost compliance confirmed for every selected product (no paid tiers needed)
+- Real iceberg ground truth exists (BYU/NIC daily tracks, SCAR, NIC products); synthetic
+  tracks remain a labeled supplement, not a replacement (Phase 1 finding honored)
+- Continuous OSI SAF SIC record 1978/79-present (CDR + ICDR) enables persistence-baseline
+  ML training and backtests
+
+PROBLEMS:
+- None (all license/access claims verified against provider pages)
+
+DECISIONS:
+- Primary set: OSI-450+430-b, OSI-405, ERA5 (8 vars, 6-hourly), GLORYS12, iceberg
+  catalogs (BYU/NIC + NIC recent), OSI-SAF land mask; GEBCO optional
+- Scenario bundle committed as metadata+manifest only; heavy files gitignored (NFR-7)
+- Credentials (CDS/CMEMS/Earthdata free accounts) via local env vars, never committed
+- Time windows: primary Dec 2019-Mar 2020; extreme Dec 2022-Mar 2023 (record-low ice)
+
+ASSUMPTIONS:
+- ERA5 6-hourly sufficient for MVP forcing (hourly if drift errors demand it)
+- GLORYS12 daily currents adequate; sub-daily tides ignored in MVP (documented)
+- OSI SAF 25 km SIC is training target; 10 km AMSR2 for display
+
+VALIDATION:
+- Every selected product mapped to at least one requirement (IN-1..IN-9) and to the
+  zero-cost constraint (§7.4); fallback chain defined for ice, forcing, and ocean
+
+PHASE GATE: PASS
+```
