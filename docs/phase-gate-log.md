@@ -374,3 +374,76 @@ DECISIONS:
 
 PHASE GATE: PASS (with documented GLORYS12 gap)
 ```
+
+---
+*Next: Phase 5 — Baselines. Requires team approval.*
+
+---
+
+## PHASE 5 — BASELINES
+
+```
+PHASE:     5 — Baselines (FR-6 persistence SIC, FR-9 constant-velocity iceberg,
+             FR-21 shortest-path routing)
+STATUS:    COMPLETE (awaiting team approval to begin Phase 6)
+
+COMPLETED:
+- backend/baselines/: metrics (MAE/RMSE NaN-aware, haversine, position error),
+  sea_ice (persistence forecast + per-horizon evaluation), iceberg
+  (constant-velocity extrapolation + per-horizon position error),
+  routing (navigable-mask Dijkstra over 8-connectivity grid, nearest-valid
+  endpoint snapping, no-route reporting)
+- scripts/baselines/run_baselines.py: reproducible JSON report under
+  data/baselines/ (gitignored; absolute paths never committed)
+- evaluation on the REAL 106-day Dec 2019-Mar 2020 feature store
+
+INCOMPLETE:
+- Iceberg baseline evaluated on SYNTHETIC tracks only (real BYU/NIC tracks
+  not yet downloaded - URL is manual; synthetic tracks labeled per FR-10).
+  Re-run with real tracks when available.
+
+FILES CREATED:
+- backend/baselines/{__init__,metrics,sea_ice,iceberg,routing,evaluate}.py
+- scripts/baselines/run_baselines.py
+- tests/test_baselines.py
+
+FILES MODIFIED:
+- docs/phase-gate-log.md (this entry), .gitignore (data/baselines/)
+
+TESTS:
+- .venv/Scripts/python -m pytest tests -q -> 25 passed (12 pipeline + 13 baseline)
+
+RESULTS (recorded run 2026-09-05, data/baselines/latest.json):
+- Sea-ice persistence: h=1d MAE 0.0068 / RMSE 0.0300 ... h=5d MAE 0.0208 /
+  RMSE 0.0817 (SIC fraction). These are the numbers Phase 6 ML must beat.
+- Iceberg constant-velocity (synthetic tracks): mean error 2.94 km @24h,
+  5.60 km @48h, 7.88 km @72h. Phase 7 model must beat these.
+- Shortest-path Bharati->Maitri on day-0 (2019-12-01) mask: 4247 km over
+  143 cells (great-circle = 2331 km; 1.8x = plausible on a coarse 25 km grid
+  with ice obstacles + endpoint snapping). Phase 12 routes must improve on
+  this at comparable time.
+
+PROBLEMS:
+- scipy dijkstra returns 3 values (dist, pred, sources) -> unpacked properly
+- 8-connectivity lets routes leak around wall ends -> tests now use
+  full-height walls reaching grid edges
+- Manifest absolute-path privacy leak found in repo-wide audit -> fixed in
+  provenance.py (paths now repo-relative), 13th pipeline test added
+
+DECISIONS:
+- Baseline numbers are recorded and frozen as the targets to beat; no ML
+  claims until Phase 6/7 runs beat them with recorded logs
+- Route endpoints snap to nearest navigable cell (coastal stations sit in
+  no-data cells of the 25 km OSI SAF product)
+
+ASSUMPTIONS:
+- max_sic=0.8 as the default hard ice-capability obstacle for the baseline
+  (vessel-specific limits arrive Phase 11)
+- Iceberg constant-velocity baseline uses the last two fixes per berg
+
+VALIDATION:
+- 13 baseline unit tests + 1 end-to-end test against the real store;
+  recorded run reproducible via scripts/baselines/run_baselines.py
+
+PHASE GATE: PASS
+```
