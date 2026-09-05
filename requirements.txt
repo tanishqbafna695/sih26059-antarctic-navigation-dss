@@ -12,5 +12,5 @@ pytest>=8.0
 
 # Optional download clients (free accounts required; imported lazily by
 # backend/data_pipeline/fetch/ so the pipeline works without them):
-# cdsapi>=0.7              # ERA5 via Copernicus Climate Data Store
-# copernicusmarine>=1.4    # GLORYS12 + OSI SAF SIC/drift via CMEMS
+cdsapi>=0.7              # ERA5 via Copernicus Climate Data Store
+copernicusmarine>=1.4    # GLORYS12 + OSI SAF SIC/drift via CMEMS

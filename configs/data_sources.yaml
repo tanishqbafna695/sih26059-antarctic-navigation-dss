@@ -28,8 +28,8 @@ products:
     provider: "EUMETSAT OSI SAF (OSI-450 + OSI-430-b)"
     license: "CC-BY-4.0"
     access: cmems
-    cmems_dataset: "SEAICE_GLO_SEAICE_L4_REP_OBSERVATIONS_011_009"
-    variables: [sea_ice_concentration]
+    cmems_dataset: "osisaf_obs-si_glo_phy_sic-south_my_amsr_cdr_P1D-m"
+    variables: [ice_conc]
     units: "%"
     crs: 3412
     spatial_res_km: 25
@@ -41,8 +41,8 @@ products:
     provider: "EUMETSAT OSI SAF (OSI-405)"
     license: "CC-BY-4.0"
     access: cmems
-    cmems_dataset: "SEAICE_GLO_SEAICE_L4_NRT_OBSERVATIONS_011_001"
-    variables: [sea_ice_x_displacement, sea_ice_y_displacement]
+    cmems_dataset: "cmems_obs-si_glo_phy-drift-south_my_l4_P1D-m"
+    variables: [dX_mean, dY_mean]
     units: "m (48-h displacement)"
     crs: 3412
     spatial_res_km: 62.5
@@ -75,7 +75,7 @@ products:
     provider: "Mercator Ocean / CMEMS (GLORYS12, GLOBAL_MULTIYEAR_PHY_001_030)"
     license: "Copernicus licence (attribution required)"
     access: cmems
-    cmems_dataset: "GLOBAL_MULTIYEAR_PHY_001_030"
+    cmems_dataset: "cmems_mod_glo_phy_my_0.083deg_P1D-m"
     variables: [uo, vo, thetao, zos]
     units: "m s-1 / K / m"
     crs: 4326

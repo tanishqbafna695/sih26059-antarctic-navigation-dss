@@ -20,13 +20,19 @@ to create and are free for any use including commercial.
 4. Click your **username** (top-right) → **Profile**
 5. Under **API Key**, click **Show Key**
 6. Copy both values:
-   - **URL** (e.g. `https://cds.climate.copernicus.eu/api/v2`)
+   - **URL** (e.g. `https://cds.climate.copernicus.eu/api`)
    - **Key** (e.g. `a1b2c3d4-e5f6-7890-abcd-ef1234567890`)
+
+### Accept the ERA5 licence
+
+Before the first download, you **must** accept the ERA5 licence:
+1. Go to https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels
+2. Scroll down and click **"Accept licence"**
 
 ### Environment variables
 
 ```
-CDSAPI_URL=https://cds.climate.copernicus.eu/api/v2
+CDSAPI_URL=https://cds.climate.copernicus.eu/api
 CDSAPI_KEY=your-key-here
 ```
 
@@ -42,8 +48,9 @@ and accept it before the first download.
 
 **Used for:** GLORYS12 ocean reanalysis (currents, SST), OSI SAF sea-ice concentration
 and drift
-**Products:** `GLOBAL_MULTIYEAR_PHY_001_030` (GLORYS12), `SEAICE_GLO_SEAICE_L4_REP_OBSERVATIONS_011_009`
-(SIC), `SEAICE_GLO_SEAICE_L4_NRT_OBSERVATIONS_011_001` (drift)
+**Products:** `cmems_mod_glo_phy_my_0.083deg_P1D-m` (GLORYS12),
+`osisaf_obs-si_glo_phy_sic-south_my_amsr_cdr_P1D-m` (SIC),
+`cmems_obs-si_glo_phy-drift-south_my_l4_P1D-m` (drift)
 **License:** Copernicus licence (attribution required)
 
 ### Steps
@@ -52,6 +59,7 @@ and drift
 2. Click **Register** and create a free account (email + password)
 3. After email verification, log in — your **email is your username**
 4. No separate API key is needed; the pipeline authenticates with email + password directly
+5. Accept any licence agreements for the products you need (click "Accept" on the product page)
 
 ### Environment variables
 
@@ -72,7 +80,7 @@ first use you may need to accept a licence in the CMEMS web interface.
 ### PowerShell (current session only)
 
 ```powershell
-$env:CDSAPI_URL      = "https://cds.climate.copernicus.eu/api/v2"
+$env:CDSAPI_URL      = "https://cds.climate.copernicus.eu/api"
 $env:CDSAPI_KEY       = "your-cds-key-here"
 $env:CMEMS_USERNAME   = "your-cmems-email@example.com"
 $env:CMEMS_PASSWORD   = "your-cmems-password"
@@ -83,7 +91,7 @@ $env:CMEMS_PASSWORD   = "your-cmems-password"
 Create a `.env` file at the project root (already in `.gitignore`):
 
 ```
-CDSAPI_URL=https://cds.climate.copernicus.eu/api/v2
+CDSAPI_URL=https://cds.climate.copernicus.eu/api
 CDSAPI_KEY=your-cds-key-here
 CMEMS_USERNAME=your-cmems-email@example.com
 CMEMS_PASSWORD=your-cmems-password
@@ -132,6 +140,7 @@ Processed feature store + provenance manifests land in `data/processed/` and
 | `401 Unauthorized` (CMEMS) | wrong email/password | Re-login at data.marine.copernicus.eu |
 | CDS download hangs | large file; first-time queue | CDS may take minutes for large ERA5 requests — be patient |
 | CMEMS product not found | product ID changed | Check `data.marine.copernicus.eu` → search the product → update `configs/data_sources.yaml` |
+| `403 Forbidden` (CDS) | licence not accepted | Accept ERA5 licence at the product page |
 | `cdsapi not installed` | missing dependency | `.venv/Scripts/pip install cdsapi` |
 | `copernicusmarine not installed` | missing dependency | `.venv/Scripts/pip install copernicusmarine` |
 
