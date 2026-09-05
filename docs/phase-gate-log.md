@@ -315,3 +315,62 @@ VALIDATION:
 
 PHASE GATE: PASS
 ```
+
+---
+*Addendum 2026-09-05 — real-data verification (closes the Phase 4 INCOMPLETE item).*
+
+```
+STATUS:    REAL-DATA PATH VERIFIED for sic + drift + era5 (see "INCOMPLETE REMAINING")
+
+COMPLETED:
+- Real downloads executed with free CDS + CMEMS accounts: OSI SAF SIC
+  (39 MB, 106 daily steps), OSI SAF drift (154 MB), ERA5 oper+wave
+  (230 MB, 8 variables, 6-hourly)
+- Fixed product/dataset ID mismatch: CMEMS `subset()` needs dataset_ids
+  (osisaf_obs-si_glo_phy_sic-south_my_amsr_cdr_P1D-m, cmems_obs-si_glo_phy-
+  drift-south_my_l4_P1D-m, cmems_mod_glo_phy_my_0.083deg_P1D-m), not the
+  product IDs listed in the Phase 3 doc (615a102)
+- CDS API URL is now https://cds.climate.copernicus.eu/api (v2 path removed);
+  ERA5 requires accepting the Copernicus general licence + dataset licence
+- Real files use rectilinear lat/lon grids, native variable names (ice_conc,
+  dX_mean/dY_mean, msl) and valid_time dim -> pipeline now auto-detects
+  layout and normalizes names/dims
+- ERA5 CDS requests split per month (CDS cross-products year x month lists:
+  the first download pulled 8 months instead of the 4 in-window ones);
+  stream archives merged by interpolation onto the finest grid
+- Fetch made idempotent: skips products whose raw file already exists
+- Real feature store built: 106 daily steps, 175x161 cells @ 25 km EPSG:3412
+
+INCOMPLETE REMAINING:
+- GLORYS12 ocean currents: CMEMS download hung repeatedly at ~2.8 GB (three
+  attempts, each killed). NOT in the feature store. Ocean current forcing
+  currently uses ERA5 + synthetic fallback; re-attempt later or subset a
+  shorter window. Recorded as a data gap, not silently hidden.
+- Land-mask derivation from real OSI SAF status flags (Phase 6, unchanged)
+
+TESTS:
+- 12/12 passing after all fixes
+
+RESULTS:
+- Real SIC seasonal cycle correct: ice-covered fraction 19% (Dec) -> 2% (Mar)
+- Real ERA5 physically plausible: u10 -27..19 m/s, t2m 218..280 K, mslp
+  95-103 kPa, swh to 8.4 m
+- Drift is genuinely sparse in this austral-summer window (<1% cells valid,
+  only near the Dec ice band 65-69S): SAR drift needs ice features; the
+  Bharati-Maitri corridor is mostly open water by Jan. Data property, not bug.
+- Static ~40-56% NaN per product = grid cells outside the native lat/lon box
+  (by design, masked in routing)
+
+PROBLEMS:
+- CDS 403 "required licences not accepted" -> fixed by accepting the general
+  Copernicus licence on the dataset download tab (web UI step)
+- ERA5 zip archives + stream splits -> fixed (extract, interp to finest grid,
+  merge per month, concat across months)
+- GLORYS12 repeated hangs at 2.8 GB (documented above, unresolved)
+
+DECISIONS:
+- Real-data gap for the core three products is closed; baseline/ML phases can
+  proceed on real SIC/drift/ERA5. GLORYS12 optional (drift forecast benefit).
+
+PHASE GATE: PASS (with documented GLORYS12 gap)
+```
