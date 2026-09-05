@@ -1,0 +1,16 @@
+# Core data-pipeline dependencies (Phase 4). All free / open source.
+numpy>=1.26
+pandas>=2.2
+xarray>=2024.1
+pyproj>=3.6
+PyYAML>=6.0
+requests>=2.31
+scipy>=1.12
+h5netcdf>=1.3
+h5py>=3.11
+pytest>=8.0
+
+# Optional download clients (free accounts required; imported lazily by
+# backend/data_pipeline/fetch/ so the pipeline works without them):
+# cdsapi>=0.7              # ERA5 via Copernicus Climate Data Store
+# copernicusmarine>=1.4    # GLORYS12 + OSI SAF SIC/drift via CMEMS

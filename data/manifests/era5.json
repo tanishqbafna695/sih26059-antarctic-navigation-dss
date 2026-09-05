@@ -1,0 +1,29 @@
+{
+  "product": "era5",
+  "provider": "ECMWF / Copernicus Climate Data Store (ERA5 single levels)",
+  "license": "Copernicus licence (free incl. commercial use, attribution)",
+  "spatial_res": 0.25,
+  "temporal_res": "6-hourly",
+  "crs": 4326,
+  "units": null,
+  "coverage_start": "2019-12-01",
+  "coverage_end": "2020-03-15",
+  "missing_rate": 0.4046140195208518,
+  "out_of_range_rate": 0.0,
+  "qc_flags": [
+    "regridded to EPSG:3412 25.0 km"
+  ],
+  "preprocessing": [
+    "regrid to common grid",
+    "resample to daily UTC",
+    "range/missing QC"
+  ],
+  "files": [
+    {
+      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\synthetic\\raw\\era5_synthetic.nc",
+      "sha256": "a968f566fc8173f5871beaf18b2359d01fcbd90269dbff42c7f0bad40b3e1dc1"
+    }
+  ],
+  "created_utc": "2026-09-05T04:01:55+00:00",
+  "synthetic": true
+}

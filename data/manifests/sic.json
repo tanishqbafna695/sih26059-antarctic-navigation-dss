@@ -1,0 +1,30 @@
+{
+  "product": "sic",
+  "provider": "EUMETSAT OSI SAF (OSI-450 + OSI-430-b)",
+  "license": "CC-BY-4.0",
+  "spatial_res": 25,
+  "temporal_res": "daily",
+  "crs": 3412,
+  "units": "%",
+  "coverage_start": "2019-12-01",
+  "coverage_end": "2020-03-15",
+  "missing_rate": 0.21387755102040817,
+  "out_of_range_rate": 0.008236424733783531,
+  "qc_flags": [
+    "regridded to EPSG:3412 25.0 km",
+    "land cells masked"
+  ],
+  "preprocessing": [
+    "regrid to common grid",
+    "resample to daily UTC",
+    "range/missing QC"
+  ],
+  "files": [
+    {
+      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\synthetic\\raw\\sic_synthetic.nc",
+      "sha256": "207d7fd08a8b5df9dd5a3c048a08d23ea29c448495f7495e0aaf47f345a7459c"
+    }
+  ],
+  "created_utc": "2026-09-05T04:01:45+00:00",
+  "synthetic": true
+}

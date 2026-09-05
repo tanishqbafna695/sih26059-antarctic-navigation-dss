@@ -1,0 +1,113 @@
+# Data source registry (Phase 3 selection, verified 2026-09-05).
+# Every product is free / open-licensed (zero-cost constraint, project-definition §7.4).
+# Used by backend/data_pipeline (config.py reads this file).
+
+scenarios:
+  bharati_maitri_2019_20:
+    name: "Bharati -> Maitri, Dec 2019 - Mar 2020 (primary demo)"
+    start: "2019-12-01"
+    end: "2020-03-15"
+    box: { south: -75.0, north: -55.0, west: 0.0, east: 95.0 }
+    grid:
+      epsg: 3412
+      spacing_km: 25.0
+      margin_km: 50.0
+  bharati_maitri_2022_23_extreme:
+    name: "Bharati -> Maitri, Dec 2022 - Mar 2023 (record-low ice, re-routing demo)"
+    start: "2022-12-01"
+    end: "2023-03-15"
+    box: { south: -75.0, north: -55.0, west: 0.0, east: 95.0 }
+    grid:
+      epsg: 3412
+      spacing_km: 25.0
+      margin_km: 50.0
+
+products:
+  sic:
+    domain: sea_ice_concentration
+    provider: "EUMETSAT OSI SAF (OSI-450 + OSI-430-b)"
+    license: "CC-BY-4.0"
+    access: cmems
+    cmems_dataset: "SEAICE_GLO_SEAICE_L4_REP_OBSERVATIONS_011_009"
+    variables: [sea_ice_concentration]
+    units: "%"
+    crs: 3412
+    spatial_res_km: 25
+    temporal_res: daily
+    layout: polar            # dims y/x on EPSG:3412
+    qc: { vmin: 0.0, vmax: 100.0 }
+  drift:
+    domain: sea_ice_drift
+    provider: "EUMETSAT OSI SAF (OSI-405)"
+    license: "CC-BY-4.0"
+    access: cmems
+    cmems_dataset: "SEAICE_GLO_SEAICE_L4_NRT_OBSERVATIONS_011_001"
+    variables: [sea_ice_x_displacement, sea_ice_y_displacement]
+    units: "m (48-h displacement)"
+    crs: 3412
+    spatial_res_km: 62.5
+    temporal_res: daily
+    layout: polar
+    drift_period_days: 2.0
+    qc: { vmin: -50000.0, vmax: 50000.0 }
+  era5:
+    domain: atmospheric_forcing
+    provider: "ECMWF / Copernicus Climate Data Store (ERA5 single levels)"
+    license: "Copernicus licence (free incl. commercial use, attribution)"
+    access: cds
+    cds_dataset: "reanalysis-era5-single-levels"
+    variables:
+      - { cds: "10m_u_component_of_wind", short: u10, units: "m s-1" }
+      - { cds: "10m_v_component_of_wind", short: v10, units: "m s-1" }
+      - { cds: "2m_temperature", short: t2m, units: "K" }
+      - { cds: "mean_sea_level_pressure", short: mslp, units: "Pa" }
+      - { cds: "sea_surface_temperature", short: sst, units: "K" }
+      - { cds: "significant_height_of_combined_wind_waves_and_swell", short: swh, units: "m" }
+      - { cds: "mean_wave_direction", short: mwd, units: "degrees" }
+      - { cds: "mean_wave_period", short: mwp, units: "s" }
+    crs: 4326
+    spatial_res_deg: 0.25
+    temporal_res: "6-hourly"
+    layout: rectilinear
+    qc: { vmin: null, vmax: null }
+  glorys12:
+    domain: ocean_physics
+    provider: "Mercator Ocean / CMEMS (GLORYS12, GLOBAL_MULTIYEAR_PHY_001_030)"
+    license: "Copernicus licence (attribution required)"
+    access: cmems
+    cmems_dataset: "GLOBAL_MULTIYEAR_PHY_001_030"
+    variables: [uo, vo, thetao, zos]
+    units: "m s-1 / K / m"
+    crs: 4326
+    spatial_res_deg: 0.0833333
+    temporal_res: daily
+    layout: rectilinear
+    qc: { vmin: null, vmax: null }
+  iceberg_byu_nic:
+    domain: iceberg_tracks
+    provider: "BYU / US NIC consolidated Antarctic iceberg tracking database (Budge & Long 2018)"
+    license: "free research use; cite Budge & Long 2018"
+    access: http
+    url: null   # set at runtime / download manually from www.scp.byu.edu/iceberg
+    note: "verify current download URL; place file in data/raw/icebergs/byu_nic.csv"
+  iceberg_nic_recent:
+    domain: iceberg_tracks
+    provider: "US National Ice Center Antarctic iceberg products"
+    license: "US government (public)"
+    access: http
+    url: "https://usicecenter.gov/Products/AntarcIcebergs.csv"
+    note: "presence-based 1x1 degree chart data + named bergs; verify URL at run time"
+  gebco:
+    domain: bathymetry
+    provider: "GEBCO 2023 Grid"
+    license: "CC-BY-4.0"
+    access: manual
+    url: null
+    note: "place global or subset netCDF in data/raw/gebco/ manually (download.gebco.net)"
+  land_mask:
+    domain: land_mask
+    provider: "OSI SAF land mask (derived from SIC status flags)"
+    license: "CC-BY-4.0"
+    access: derived
+    source: sic
+    note: "real-mode derivation implemented in Phase 6 once OSI SAF flags inspected"

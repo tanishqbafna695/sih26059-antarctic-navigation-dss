@@ -1,0 +1,22 @@
+# Local environment
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Secrets (never commit free-account credentials)
+.env
+credentials*
+*_key.txt
+
+# Heavy / regenerable data (NFR-7: downloaded by script, never committed)
+data/raw/*
+data/processed/*
+data/synthetic/*
+data/scenarios/*/data/*
+*.nc
+
+# Keep directory placeholders tracked
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/synthetic/.gitkeep
