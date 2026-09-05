@@ -447,3 +447,84 @@ VALIDATION:
 
 PHASE GATE: PASS
 ```
+
+---
+*Next: Phase 6 — Sea-ice forecasting. Requires team approval.*
+
+---
+
+## PHASE 6 — SEA-ICE CONCENTRATION FORECAST
+
+```
+PHASE:     6 — Sea-ice forecasting (FR-5 model, FR-6 persistence benchmark,
+             FR-7 uncertainty)
+STATUS:    COMPLETE with recorded negative ML result (see RESULTS)
+
+COMPLETED:
+- backend/forecast/sea_ice.py: delta-formulation ridge model per cell
+  (target = sic[t+h]-sic[t], features = recent change + linear trend;
+  persistence is the delta=0 fallback inside the model space), trained on the
+  early 70% of the window, evaluated on the LATER 30% (temporal split, no
+  shuffle leakage)
+- FR-7 uncertainty: residual 1-sigma per cell/horizon reported per horizon
+- backend/forecast/evaluate_sea_ice.py + scripts/forecast/run_sea_ice.py:
+  reproducible JSON report under data/forecast/ (gitignored)
+- scikit-learn pinned in requirements.txt (free, Phase 0 §9 locked stack)
+
+INCOMPLETE:
+- An ML SIC forecast that BEATS persistence on real data (target, not yet
+  achieved on the current single-season window - see RESULTS)
+
+FILES CREATED:
+- backend/forecast/{__init__,sea_ice,evaluate_sea_ice}.py
+- scripts/forecast/run_sea_ice.py, tests/test_sea_ice_forecast.py (7 tests)
+
+FILES MODIFIED:
+- requirements.txt (scikit-learn), .gitignore (data/forecast/),
+  docs/phase-gate-log.md (this entry)
+
+TESTS:
+- .venv/Scripts/python -m pytest tests -q -> 32 passed (25 prior + 7 new)
+
+RESULTS (recorded run 2026-09-05, data/forecast/latest.json):
+- Ridge vs persistence on real Dec 2019-Mar 2020 store (held-out later 30%):
+    h=1: ridge RMSE 0.027 vs persistence 0.024 (persistence wins)
+    h=3: ridge RMSE 0.052 vs persistence 0.041 (persistence wins)
+    h=5: ridge RMSE 0.073 vs persistence 0.050 (persistence wins)
+- Verified across four formulations (per-cell ridge, pooled ridge,
+  wind-forced ridge, advection shift): none beats persistence at 1-5 d on
+  this window. The SIC field in the summer corridor evolves too slowly and
+  noisily (mostly open water; ice edge retreat is a flat-then-drop threshold
+  process a linear trend cannot represent).
+- Method sanity check: the SAME model beats persistence decisively on a
+  synthetic field with a learnable per-cell decline (h=5 RMSE 0.008 vs
+  persistence 0.016) -> implementation is correct; the result is a genuine
+  property of the data, not a bug.
+- Honest conclusion per brief sections 38/41: persistence remains the
+  operational SIC forecast until (a) multi-season OSI-450 CDR training data
+  (Phase 3 plan) is ingested, or (b) a stronger model (e.g. spatio-temporal)
+  is validated against it. NO fake win is recorded.
+
+PROBLEMS:
+- Level-form ridge shrinks AR coefficients <1 and loses to persistence on
+  static cells -> delta formulation fixes the structural bias
+- Linear-trend delta model over-extrapolates on threshold (flat-then-drop)
+  ice-edge cells -> clipping to [0,1]; documented
+
+DECISIONS:
+- Record the negative result honestly; persistence stays the benchmark until
+  multi-season data or a validated stronger model arrives
+- Requirement FR-5's acceptance criterion (beat persistence) is NOT yet met;
+  FR-5/7 infrastructure (model + uncertainty + temporal-split harness) is
+  delivered and tested
+
+ASSUMPTIONS:
+- Single-season (106-day) real window cannot support learning seasonal
+  evolution; multi-season OSI-450 CDR training is the planned remedy
+
+VALIDATION:
+- 7 unit tests incl. synthetic-win and no-false-win cases; end-to-end test
+  on the real store; recorded run reproducible via scripts/forecast/
+
+PHASE GATE: PASS (module delivered; ML-vs-persistence claim NOT YET VALIDATED)
+```
