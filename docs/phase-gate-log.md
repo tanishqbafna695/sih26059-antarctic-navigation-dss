@@ -234,11 +234,84 @@ DECISIONS:
 ASSUMPTIONS:
 - ERA5 6-hourly sufficient for MVP forcing (hourly if drift errors demand it)
 - GLORYS12 daily currents adequate; sub-daily tides ignored in MVP (documented)
-- OSI SAF 25 km SIC is training target; 10 km AMSR2 for display
-
-VALIDATION:
+- OSI SAF 25 km SIC is training target; 10 km AMSR2 for displayVALIDATION:
 - Every selected product mapped to at least one requirement (IN-1..IN-9) and to the
   zero-cost constraint (§7.4); fallback chain defined for ice, forcing, and ocean
+
+PHASE GATE: PASS
+```
+
+---
+*Next: Phase 4 — Data Pipeline (raw → validation → cleaning → normalization → feature generation → storage). Requires team approval.*
+
+---
+
+## PHASE 4 — DATA PIPELINE
+
+```
+PHASE:     4 — Data Pipeline
+STATUS:    COMPLETE (awaiting team approval to begin Phase 5)
+
+COMPLETED:
+- configs/data_sources.yaml: product registry (all zero-cost) + 2 scenarios
+- backend/data_pipeline core: crs (WGS84 <-> EPSG:3412), temporal (daily axes,
+  gap fill), grid (common 25 km PS routing grid; rectilinear + polar regridding
+  incl. descending-axis handling), qc (missing rate, range checks), features
+  (ice mask, edge distance, drift/wind/current store), provenance (manifests)
+- fetch clients: era5 (CDS API), cmems (GLORYS12 + OSI SAF SIC/drift),
+  icebergs (BYU/NIC + US NIC), gebco (manual); lazy imports, env-var creds
+- fetch_all orchestrator: --dry-run (plan + credential status), --synthetic
+  (deterministic, credential-free end-to-end), real fetch path
+- synthetic.py: labeled SYNTHETIC products (SIC + land mask, drift, ERA5-like,
+  GLORYS12-like, advected iceberg tracks) + 7-day bundle generated in repo
+- scripts/data_fetch/fetch_all.py CLI wrapper; requirements.txt; pyproject
+- tests: 12 passing (CRS, grid, temporal, QC, features, provenance,
+  synthetic end-to-end)
+
+INCOMPLETE:
+- Real-data download not exercised (needs free CDS/CMEMS accounts + network)
+- Land-mask derivation from real OSI SAF status flags (deferred to Phase 6)
+
+FILES CREATED:
+- configs/data_sources.yaml, requirements.txt, pyproject.toml, .gitignore
+- backend/data_pipeline/ (10 modules), scripts/data_fetch/fetch_all.py
+- tests/test_data_pipeline.py, data/manifests/*.json (5 manifests)
+
+FILES MODIFIED:
+- docs/phase-gate-log.md (this entry)
+
+TESTS:
+- .venv/Scripts/python -m pytest tests -q -> 12 passed
+
+RESULTS:
+- Synthetic feature store built: sic/drift/era5/glorys12 merged to 7 daily
+  timesteps on 175x161 grid (25 km, EPSG:3412); missing rates reported per
+  product (21-40% = cells outside the lon/lat box, masked in routing)
+- Provenance manifests committed (source, license, res, QC, preprocessing,
+  sha256) - data traceability per brief §23
+- Public-repo hygiene verified: heavy data + .venv gitignored; only metadata
+  committed
+
+PROBLEMS:
+- h5netcdf rejects bool dtypes/attrs -> invalid_netcdf=True for internal files,
+  int flag for attrs
+- RGI only supports trailing extra dims -> moveaxis in regrid_rectilinear
+- resample broadcasts static vars onto time axis -> split time/static vars
+- glorys synthetic filename mismatch (glorys vs glorys12) -> fixed
+
+DECISIONS:
+- One common 25 km EPSG:3412 grid for all routing work; outside-box cells
+  stay NaN and are masked in routing (Phase 12)
+- Free-account credentials via env vars only; dry-run reports missing creds
+- Synthetic products always labeled (attrs + manifests + CSV source column)
+
+ASSUMPTIONS:
+- ERA5 6-hourly -> daily means sufficient for the feature store
+- OSI SAF/GLORYS product IDs in yaml verified at first real download
+
+VALIDATION:
+- 12 tests cover every core module and the credential-free end-to-end path
+- .gitignore dry-run staged only code/config/manifests/placeholders
 
 PHASE GATE: PASS
 ```
