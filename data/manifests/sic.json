@@ -8,11 +8,10 @@
   "units": "%",
   "coverage_start": "2019-12-01",
   "coverage_end": "2020-03-15",
-  "missing_rate": 0.21387755102040817,
-  "out_of_range_rate": 0.008236424733783531,
+  "missing_rate": 0.5640461401952085,
+  "out_of_range_rate": 0.0004500774962787961,
   "qc_flags": [
-    "regridded to EPSG:3412 25.0 km",
-    "land cells masked"
+    "regridded to EPSG:3412 25.0 km"
   ],
   "preprocessing": [
     "regrid to common grid",
@@ -21,10 +20,10 @@
   ],
   "files": [
     {
-      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\synthetic\\raw\\sic_synthetic.nc",
-      "sha256": "207d7fd08a8b5df9dd5a3c048a08d23ea29c448495f7495e0aaf47f345a7459c"
+      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\raw\\sic\\sic.nc",
+      "sha256": "5e303e34480cd953a7e054b8a29b1b9aa5d6b1d2f1d1d496b458670f1372fb36"
     }
   ],
-  "created_utc": "2026-09-05T04:01:45+00:00",
-  "synthetic": true
+  "created_utc": "2026-09-05T14:02:44+00:00",
+  "synthetic": false
 }

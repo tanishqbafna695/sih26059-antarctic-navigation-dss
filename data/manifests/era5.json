@@ -20,10 +20,10 @@
   ],
   "files": [
     {
-      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\synthetic\\raw\\era5_synthetic.nc",
-      "sha256": "a968f566fc8173f5871beaf18b2359d01fcbd90269dbff42c7f0bad40b3e1dc1"
+      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\raw\\era5\\era5.nc",
+      "sha256": "595af4e15eea0e1dd1ba8c1b6131135463842aa92f8cc07cac74895ff864eae8"
     }
   ],
-  "created_utc": "2026-09-05T04:01:55+00:00",
-  "synthetic": true
+  "created_utc": "2026-09-05T14:02:50+00:00",
+  "synthetic": false
 }

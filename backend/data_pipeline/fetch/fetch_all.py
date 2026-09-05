@@ -35,12 +35,38 @@ def _open_products(raw_dir: Path, synthetic: bool) -> dict[str, xr.Dataset]:
     for pid, (syn, real) in _RAW_FILES.items():
         p = raw_dir / (syn if synthetic else real)
         if p.exists():
-            out[pid] = xr.open_dataset(p, engine="h5netcdf")
+            ds = xr.open_dataset(p, engine="h5netcdf")
+            ds = _normalize_raw(ds, pid)
+            out[pid] = ds
     return out
+
+
+def _normalize_raw(ds: xr.Dataset, pid: str) -> xr.Dataset:
+    """Adapt real product files to what the pipeline expects.
+
+    - ERA5 ships `valid_time` (and `number`/`expver` singleton coords) -> rename to `time`
+    - Real OSI SAF / GLORYS12 files use lat/lon dims (rectilinear), even though the
+      config may say `polar`; the regrid step auto-detects from the actual dims.
+    """
+    if "valid_time" in ds.dims:
+        ds = ds.rename({"valid_time": "time"})
+    # CDS ships ERA5 pressure as `msl`; pipeline/config uses the `mslp` alias.
+    if pid == "era5" and "msl" in ds.data_vars and "mslp" not in ds.data_vars:
+        ds = ds.rename({"msl": "mslp"})
+    # Drop singleton ensemble/experiment coords that confuse regridding
+    for coord in ("number", "expver"):
+        if coord in ds.coords and coord not in ds.dims:
+            ds = ds.drop_vars(coord)
+    return ds
 
 
 def _fetch_product(pid: str, scen: dict, pcfg: dict, raw_dir: Path,
                    creds: Credentials, dry_run: bool) -> None:
+    # Idempotency: if the raw file already exists, skip the (possibly slow,
+    # credential-gated) download and reuse what is on disk.
+    if _raw_path(raw_dir, pid, synthetic=False).exists():
+        print(f"[skip] {pid}: raw file already present")
+        return
     access = pcfg["access"]
     if access == "cds":
         era5.fetch_era5(scen, pcfg, raw_dir, creds.cds_url, creds.cds_key, dry_run=dry_run)
@@ -68,12 +94,17 @@ def process_product(pid: str, ds: xr.Dataset, pcfg: dict, grid,
                     scen: dict) -> tuple[xr.Dataset, QCReport]:
     """Regrid a raw product to the common grid, QC it, align to a daily axis."""
     layout = pcfg["layout"]
+    # Real CMEMS/OSI SAF files ship rectilinear lat/lon even when the config says
+    # polar (the polar layout applies to the native OSI SAF format); detect from dims.
+    probe = next(iter(ds.data_vars.values()))
+    if any(d in probe.dims for d in ("latitude", "lat", "longitude", "lon")):
+        layout = "rectilinear"
     src_epsg = pcfg.get("crs")
     out: dict = {}
     flags = [f"regridded to EPSG:{grid.epsg} {grid.spacing_km} km"]
 
     if pid == "sic":
-        da = ds["sea_ice_concentration"] if "sea_ice_concentration" in ds else ds["sic"]
+        da = next(ds[k] for k in ("sea_ice_concentration", "sic", "ice_conc") if k in ds)
         vals = regrid_product(da, grid, layout, src_epsg=src_epsg)
         out["sic"] = (["time", "y", "x"], vals)
         if "landmask" in ds:
@@ -81,8 +112,8 @@ def process_product(pid: str, ds: xr.Dataset, pcfg: dict, grid,
             out["landmask"] = (["y", "x"], lm > 0.5)
             flags.append("land cells masked")
     elif pid == "drift":
-        vx = next(k for k in ("sea_ice_x_displacement", "drift_x") if k in ds)
-        vy = next(k for k in ("sea_ice_y_displacement", "drift_y") if k in ds)
+        vx = next(k for k in ("sea_ice_x_displacement", "drift_x", "dX_mean") if k in ds)
+        vy = next(k for k in ("sea_ice_y_displacement", "drift_y", "dY_mean") if k in ds)
         out["drift_x"] = (["time", "y", "x"],
                           regrid_product(ds[vx], grid, layout, src_epsg=src_epsg))
         out["drift_y"] = (["time", "y", "x"],
