@@ -528,3 +528,74 @@ VALIDATION:
 
 PHASE GATE: PASS (module delivered; ML-vs-persistence claim NOT YET VALIDATED)
 ```
+
+---
+*Addendum 2026-09-05 — multi-season training closes the Phase 6 gap.*
+
+```
+STATUS:    ML-vs-persistence claim now VALIDATED for a seasonal-climatology
+           model (the planned multi-season remedy, per Phase 3 data strategy)
+
+COMPLETED:
+- backend/data_pipeline/fetch/fetch_training_sic.py: per-season CMEMS OSI SAF
+  SIC CDR fetch -> regrid onto the common 25 km grid -> concatenated labeled
+  record (season + day-in-season coords). Demo window 2019-12-01..2020-03-15
+  is EXCLUDED from training by construction (held-out season). Validated on a
+  3-season bundle (2016-17..2018-19, 315 days, 71 MB). 16-season extension
+  (2003-2018) is a one-command re-run (--start-year 2003).
+- backend/forecast/seasonal.py: seasonal-climatology delta model
+  forecast[t+h] = sic[t] + mean over TRAINING seasons of the smoothed
+  day-in-season SIC change summed over [t, t+h). Persistence is the delta=0
+  special case; the climatology only adds skill where melt is systematic.
+  Moving-average smoothing fully vectorized + NaN-safe.
+- backend/forecast/evaluate_seasonal.py + scripts/forecast/run_seasonal.py:
+  reproducible JSON report (data/forecast/latest_seasonal.json, gitignored);
+  season length auto-detected from gaps in the training time axis
+
+INCOMPLETE:
+- Training bundle currently 3 seasons; widening to the full 2002-2018 CDR
+  record would sharpen the climatology (one-command re-run, ~30 min)
+
+FILES CREATED:
+- backend/data_pipeline/fetch/fetch_training_sic.py
+- backend/forecast/seasonal.py, backend/forecast/evaluate_seasonal.py
+- scripts/forecast/run_seasonal.py, tests/test_seasonal_forecast.py (6 tests)
+- data/manifests/training_sic.json
+
+TESTS:
+- .venv/Scripts/python -m pytest tests -q -> 38 passed (32 prior + 6 new)
+
+RESULTS (recorded run 2026-09-05, data/forecast/latest_seasonal.json):
+- Seasonal climatology vs persistence on the held-out 2019-20 season, scored
+  over the SAME later 30% pairs as the Phase 6 ridge run:
+    h=1: seasonal RMSE 0.0235 vs persistence 0.0235 (tie)
+    h=2: seasonal RMSE 0.0340 vs persistence 0.0343 (seasonal wins)
+    h=3: seasonal RMSE 0.0403 vs persistence 0.0410 (seasonal wins)
+    h=4: seasonal RMSE 0.0449 vs persistence 0.0459 (seasonal wins)
+    h=5: seasonal RMSE 0.0487 vs persistence 0.0501 (seasonal wins)
+- RMSE improvement grows with horizon (h=2 +0.0003 ... h=5 +0.0015) - the
+  physically expected signature: the climatology knows the systematic Dec-Mar
+  melt that persistence cannot see. This is the FIRST positive
+  model-vs-baseline result on real data (Phase 5 baselines 2723bd7, ridge
+  negative 13d5417).
+- Method sanity: on a synthetic multi-season field with a shared retreat the
+  model beats persistence decisively; on a static field it claims no win.
+
+PROBLEMS:
+- season_len overwrite bug (runner passed full 315 days as one season) ->
+  auto-detect season length from time-axis gaps; regression test added
+- apply_along_axis smoothing was slow + nanmean empty-slice warnings ->
+  vectorized cumsum moving mean with explicit valid-count mask
+- Cumsum window length off-by-window_half -> zero-prefixed cumsum; tests
+  assert exact (ny, nx, season_len-1) shape
+
+DECISIONS:
+- FR-5 acceptance (model beats the FR-6 persistence baseline) now has a
+  validated positive result on real held-out data - but honest caveat: the
+  win is climatological (systematic seasonal melt), modest in magnitude, and
+  trained on 3 seasons. Claim kept proportionate; widening training seasons
+  is the documented next strengthening step.
+
+PHASE GATE: PASS (ML-vs-persistence claim VALIDATED for seasonal model;
+           ridge per-window model remains negative, recorded above)
+```
