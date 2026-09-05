@@ -1,0 +1,35 @@
+{
+  "product": "training_sic",
+  "provider": "EUMETSAT OSI SAF (OSI-450 + OSI-430-b)",
+  "license": "CC-BY-4.0",
+  "spatial_res": 25,
+  "temporal_res": "daily",
+  "crs": 3412,
+  "units": "%",
+  "coverage_start": "2016-12-01",
+  "coverage_end": "2019-03-15",
+  "missing_rate": 0.5640461401952085,
+  "out_of_range_rate": 0.0,
+  "qc_flags": [],
+  "preprocessing": [
+    "subset per season",
+    "regrid to EPSG:3412 25 km",
+    "concatenate seasons",
+    "% -> fraction"
+  ],
+  "files": [
+    {
+      "path": "data\\raw\\sic\\sic_2016-12-01..2017-03-15.nc",
+      "sha256": "581c40481c42d408c9644865757d0899e9b3c172fbc3a87896d5a89bcfb97f11"
+    },
+    {
+      "path": "data\\raw\\sic\\sic_2016-12-01..2017-03-15_(1).nc",
+      "sha256": "a68070db070185400b08db6d1072221180b3ed17a6b172a3d696e481c35acf9e"
+    },
+    {
+      "path": "data\\raw\\sic\\sic_2017-12-01..2018-03-15.nc",
+      "sha256": "c590af3bd2d0d06c33ab3091d2505c98c2304858f4b0ca5436daae363e22b660"
+    }
+  ],
+  "created_utc": "2026-09-05T14:46:06+00:00"
+}
