@@ -134,6 +134,22 @@ def test_manifest_roundtrip(tmp_path):
     assert out.exists()
 
 
+def test_manifest_paths_are_repo_relative(tmp_path):
+    """Privacy: committed manifests must never embed absolute machine paths."""
+    from pathlib import Path as P
+    import backend.data_pipeline.provenance as prov
+    from backend.data_pipeline import config as cfg_mod
+
+    f = cfg_mod.ROOT / "data" / "manifests" / ".gitkeep"  # a real in-repo file
+    rep = run_qc("x", np.array([1.0]), vmin=0.0, vmax=1.0)
+    m = prov.new_manifest("x", {"provider": "p"}, [f], rep,
+                          coverage={}, preprocessing=[], repo_root=cfg_mod.ROOT)
+    stored = m["files"][0]["path"]
+    assert not P(stored).is_absolute()          # relative, not C:\\Users\\...
+    assert str(f).endswith(str(stored))          # still points at the right file
+    assert (cfg_mod.ROOT / stored).resolve() == f.resolve()
+
+
 # ------------------------------------------------------- end-to-end (synthetic) -
 def test_synthetic_end_to_end(tmp_path):
     run_pipeline("bharati_maitri_2019_20", tmp_path, synthetic=True, synth_days=5)

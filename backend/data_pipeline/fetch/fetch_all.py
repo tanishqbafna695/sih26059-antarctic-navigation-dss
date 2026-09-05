@@ -203,7 +203,7 @@ def run_pipeline(scenario_name: str, out_root: Path, product_ids: list[str] | No
             qc, coverage={"start": scen["start"], "end": scen["end"]},
             preprocessing=["regrid to common grid", "resample to daily UTC",
                            "range/missing QC"],
-            synthetic=synthetic,
+            repo_root=ROOT, synthetic=synthetic,
         )
         provenance.write_manifest(manifest, manifests_dir)
         print(f"  processed {pid:10s} missing={qc.missing_rate:.3f} "
@@ -222,7 +222,7 @@ def run_pipeline(scenario_name: str, out_root: Path, product_ids: list[str] | No
                          "license": "see per-product manifests"},
             [feature_path], fqc, coverage={"start": scen["start"], "end": scen["end"]},
             preprocessing=["merge processed products", "ice mask + edge distance"],
-            synthetic=synthetic,
+            repo_root=ROOT, synthetic=synthetic,
         ), manifests_dir)
     print(f"  feature store: {feature_path} ({store.sic.shape})")
     print(f"manifests: {manifests_dir}")

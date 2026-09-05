@@ -19,10 +19,10 @@
   ],
   "files": [
     {
-      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\processed\\bharati_maitri_2019_20\\features.nc",
+      "path": "data\\processed\\bharati_maitri_2019_20\\features.nc",
       "sha256": "360d8107f51c65483a6fe262921c88ac03301337af11ba2c719fa679b209b62c"
     }
   ],
-  "created_utc": "2026-09-05T14:02:52+00:00",
+  "created_utc": "2026-09-05T14:16:48+00:00",
   "synthetic": false
 }

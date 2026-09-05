@@ -27,8 +27,20 @@ def sha256_file(path: Path, chunk_size: int = 1 << 20) -> str:
 
 def new_manifest(product: str, source_cfg: dict, files: list[Path],
                  qc: QCReport, coverage: dict, preprocessing: list[str],
-                 **extra) -> dict:
-    """Assemble a manifest dict from product config, QC, and processing steps."""
+                 repo_root: Path | None = None, **extra) -> dict:
+    """Assemble a manifest dict from product config, QC, and processing steps.
+
+    File paths are stored RELATIVE to the repo root (never absolute), so
+    manifests are machine-independent and safe to commit to a public repo.
+    """
+    root = repo_root or _infer_repo_root(files[0] if files else Path("data"))
+    entry = []
+    for p in files:
+        try:
+            rel = p.resolve().relative_to(root.resolve())
+        except ValueError:
+            rel = p.resolve()  # outside the repo: keep absolute but rare
+        entry.append({"path": str(rel), "sha256": sha256_file(p)})
     return {
         "product": product,
         "provider": source_cfg.get("provider"),
@@ -43,11 +55,18 @@ def new_manifest(product: str, source_cfg: dict, files: list[Path],
         "out_of_range_rate": qc.out_of_range_rate,
         "qc_flags": qc.flags,
         "preprocessing": preprocessing,
-        "files": [{"path": str(p.relative_to(p.anchor) if False else p),
-                   "sha256": sha256_file(p)} for p in files],
+        "files": entry,
         "created_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         **extra,
     }
+
+
+def _infer_repo_root(sample: Path) -> Path:
+    """Walk up from a data file to the directory containing `.git`/configs."""
+    for parent in (sample.resolve().parents if sample.exists() else [Path.cwd()]):
+        if (parent / ".git").exists() or (parent / "configs").exists():
+            return parent
+    return Path.cwd()
 
 
 def write_manifest(manifest: dict, manifests_dir: Path) -> Path:

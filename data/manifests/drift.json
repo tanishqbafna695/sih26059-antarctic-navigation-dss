@@ -20,10 +20,10 @@
   ],
   "files": [
     {
-      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\raw\\drift\\drift.nc",
+      "path": "data\\raw\\drift\\drift.nc",
       "sha256": "c5a46d1805fc262e37fa24612fe09b3ebef21b42e60b1c102b879baca1c537f2"
     }
   ],
-  "created_utc": "2026-09-05T14:02:45+00:00",
+  "created_utc": "2026-09-05T14:16:42+00:00",
   "synthetic": false
 }

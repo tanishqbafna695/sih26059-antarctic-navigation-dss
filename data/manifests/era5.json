@@ -20,10 +20,10 @@
   ],
   "files": [
     {
-      "path": "C:\\Users\\tanishq bafna\\OneDrive\\Desktop\\sih ps 2\\data\\raw\\era5\\era5.nc",
+      "path": "data\\raw\\era5\\era5.nc",
       "sha256": "595af4e15eea0e1dd1ba8c1b6131135463842aa92f8cc07cac74895ff864eae8"
     }
   ],
-  "created_utc": "2026-09-05T14:02:50+00:00",
+  "created_utc": "2026-09-05T14:16:47+00:00",
   "synthetic": false
 }
