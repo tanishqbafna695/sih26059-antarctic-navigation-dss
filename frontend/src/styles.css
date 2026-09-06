@@ -2,31 +2,66 @@
 * { box-sizing: border-box; }
 body { margin: 0; font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
   background: #0b1220; color: #dbe4f0; line-height: 1.5; }
+
+/* ── Header ─────────────────────────────────────────────── */
 header { padding: 18px 22px 10px; border-bottom: 1px solid #1e2a44;
   background: linear-gradient(180deg, #0e1830, #0b1220); }
 header h1 { margin: 0 0 4px; font-size: 20px; }
 header .sub { color: #8ea3c4; font-size: 13px; max-width: 1000px; }
+
+/* ── Controls ───────────────────────────────────────────── */
 .controls { display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
   padding: 12px 22px; border-bottom: 1px solid #1e2a44; font-size: 13px; }
 .controls label { display: flex; gap: 6px; align-items: center; color: #9db8e6; }
 .controls select { background: #0f1a2e; color: #e8f0ff; border: 1px solid #2c4c88;
   border-radius: 6px; padding: 4px 8px; font-size: 13px; }
 .controls .chk { cursor: pointer; color: #dbe4f0; }
+.controls .separator { width: 1px; height: 18px; background: #1e2a44; margin: 0 2px; }
 .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* ── Main grid ──────────────────────────────────────────── */
 main { padding: 16px 22px; display: grid; gap: 16px;
-  grid-template-columns: minmax(420px, 1.2fr) 1fr; }
-@media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
+  grid-template-columns: 1.2fr 1fr; grid-template-rows: auto auto; }
+.map-card { grid-column: 1; grid-row: 1; }
+.panel-card { grid-column: 2; grid-row: 1; }
+@media (max-width: 1100px) {
+  main { grid-template-columns: 1fr; }
+  .map-card, .panel-card { grid-column: 1; grid-row: auto; }
+}
+
+/* ── Cards ──────────────────────────────────────────────── */
 .card { background: #0f1a2e; border: 1px solid #1e2a44; border-radius: 10px;
   padding: 14px 16px; }
+
+/* ── Map ────────────────────────────────────────────────── */
+.map-wrap { position: relative; }
+.map-wrap .map-note { font-size: 11px; color: #687ea4; margin-top: 8px; }
+
+/* ── Legend ──────────────────────────────────────────────── */
+.legend { display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  margin-top: 10px; font-size: 12px; color: #8ea3c4; }
+.legend-item { display: flex; align-items: center; gap: 5px; }
+.legend-line { width: 24px; height: 3px; border-radius: 2px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* ── Tabs ───────────────────────────────────────────────── */
 .tabs { display: flex; gap: 8px; margin-bottom: 10px; }
 .tabs button { background: #131f36; color: #9db8e6; border: 1px solid #1e2a44;
   border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: 13px; }
-.tabs button.active { background: #1d3a6e; color: #fff; }
+.tabs button:hover { background: #1a2d4d; color: #b0c8f0; }
+.tabs button.active { background: #1d3a6e; color: #fff; border-color: #2c5a9e; }
+
+/* ── Table ──────────────────────────────────────────────── */
 table { border-collapse: collapse; width: 100%; font-size: 13px; }
-th, td { text-align: right; padding: 5px 8px; border-bottom: 1px solid #1a2740; }
+th, td { text-align: right; padding: 6px 10px; border-bottom: 1px solid #1a2740; }
 th:first-child, td:first-child { text-align: left; }
-th { color: #7d93b8; font-weight: 500; font-size: 12px; }
+th { color: #7d93b8; font-weight: 500; font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.3px; }
 tr.winner td { background: #14301f; font-weight: 600; }
+tr.winner td:first-child { border-left: 3px solid #5ce08a; }
+tr:not(.winner):hover td { background: #111c30; }
+
+/* ── Lists / text ───────────────────────────────────────── */
 ul { padding-left: 20px; font-size: 13.5px; }
 .plain { font-size: 13px; color: #9db8e6; }
 .warn { background: #2a2113; border: 1px solid #6b5518; border-radius: 8px;
@@ -35,4 +70,7 @@ ul { padding-left: 20px; font-size: 13.5px; }
   padding: 10px 12px; font-size: 13px; margin-top: 10px; }
 .notice pre { white-space: pre-wrap; font-size: 12px; color: #bcd0ef; }
 .note { font-size: 11px; color: #687ea4; margin-top: 8px; }
-.foot { padding: 10px 22px 20px; font-size: 11px; color: #56698d; }
+
+/* ── Footer ─────────────────────────────────────────────── */
+.foot { padding: 10px 22px 20px; font-size: 11px; color: #56698d;
+  border-top: 1px solid #1e2a44; margin-top: 12px; }

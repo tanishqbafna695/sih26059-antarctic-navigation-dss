@@ -184,13 +184,15 @@ export default function App() {
               <option key={p} value={p}>{p.replace("_", " ")}</option>))}
           </select>
         </label>
+        <span className="separator" />
         <label className="chk"><input type="checkbox" checked={showIce}
           onChange={(e) => setShowIce(e.target.checked)} /> ice</label>
         {effScenario === "plan" && vessel === "polar_class_pc7" && (
           <label className="chk"><input type="checkbox" checked={showHazard}
-            onChange={(e) => setShowHazard(e.target.checked)} /> hazard field</label>)}
+            onChange={(e) => setShowHazard(e.target.checked)} /> hazard</label>)}
         <label className="chk"><input type="checkbox" checked={showBergs}
           onChange={(e) => setShowBergs(e.target.checked)} /> icebergs</label>
+        <span className="separator" />
         {effScenario === "plan" && !noRouteReason && ["fastest", "safest", "balanced"].map((n) => (
           <label className="chk" key={n}>
             <input type="checkbox" checked={showRoutes[n] ?? true}
@@ -199,18 +201,20 @@ export default function App() {
           </label>))}
       </div>
       <main>
-        <div className="card">
+        <div className="card map-card">
           <MapView iceUrl={ICE[effScenario]} showIce={showIce}
             hazardUrl={effScenario === "plan" && vessel === "polar_class_pc7" ? hazard45 : null}
             showHazard={showHazard} lines={lines} oldLine={oldLine}
             bergs={bergs} showBergs={showBergs} bbox={corridor.bbox as [[number, number], [number, number]]} />
-          <div className="note">White = solid ice, blue = open water, grey = no satellite data.
-            🟡 Bharati · 🔴 Maitri{effScenario !== "plan" ? " · grey dashes = previous course, green = new advice." : ""}</div>
+          <div className="map-note">White = solid ice, blue = open water, grey = no satellite data.
+            {effScenario !== "plan" ? " Grey dashes = previous course, green = new advice." : ""}</div>
         </div>
-        <SidePanel tab={tab} setTab={setTab} rows={tableRows}
-          winner={effScenario === "plan" ? winner : null} parityNote={effScenario === "plan" ? parityNote : null}
-          noRouteReason={noRouteReason} why={why} whyNote={whyNote}
-          notice={notice} statusLines={statusLines} />
+        <div className="panel-card">
+          <SidePanel tab={tab} setTab={setTab} rows={tableRows}
+            winner={effScenario === "plan" ? winner : null} parityNote={effScenario === "plan" ? parityNote : null}
+            noRouteReason={noRouteReason} why={why} whyNote={whyNote}
+            notice={notice} statusLines={statusLines} />
+        </div>
       </main>
       <div className="foot">Research prototype for demonstration, not a certified navigation system.
         Routes, numbers and advice come from recorded, reproducible runs.</div>
