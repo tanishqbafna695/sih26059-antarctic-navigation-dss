@@ -29,6 +29,7 @@ data/environment/
 data/hazard/
 data/uncertainty/
 data/vessel/
+data/validation/
 
 # Frontend build artifacts + dependencies
 frontend/node_modules/

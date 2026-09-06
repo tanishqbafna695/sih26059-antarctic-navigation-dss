@@ -1397,7 +1397,7 @@ PHASE GATE: PASS
 ```
 
 ---
-*Next: Phase 19 — Validation & Credibility. Requires team approval.*
+*Next: Phase 18 — End-to-End Integration & API. Requires team approval.*
 
 ---
 
@@ -1511,8 +1511,86 @@ PHASE GATE: PASS
 ```
 
 ---
-*Next: Phase 19 — Validation & Credibility. Requires team approval.*
+*Next: Phase 20 — Demo Mode. Requires team approval.*
 
+---
 
+## PHASE 19 — VALIDATION & CREDIBILITY
 
+```
+PHASE:     19 — Validation & Credibility (SC-1..SC-8 acceptance matrix,
+              FR acceptance audit, innovation claim #23 audit)
+STATUS:    COMPLETE (awaiting team approval to begin Phase 20)
 
+COMPLETED:
+- tests/test_acceptance.py: 20 automated tests encoding SC-1 through SC-8
+  from docs/system-requirements.md §7, executed against the real
+  Dec 2019–Mar 2020 feature store. All 20 pass.
+- scripts/validation/run_validation.py: full SC matrix runner + claim #23
+  audit + FR acceptance matrix, producing data/validation/latest.json.
+- docs/validation-report.md: structured credibility report with honest
+  assessment of claim #23 (PARTIALLY VALIDATED).
+- docs/innovation-claims.md updated: claim #19 promoted to
+  EXPERIMENTALLY VALIDATED (Phase 10/18), claim #23 status changed from
+  NOT YET VALIDATED to PARTIALLY VALIDATED with documented gaps.
+
+INCOMPLETE:
+- Iceberg-ML vs constant-velocity on real BYU/NIC tracks (model ties
+  baseline on synthetic; real tracks need manual download)
+- Academic-route benchmark (Mishra et al. 2021 Bharati–Maitri Dijkstra)
+  not yet compared against our time-aware routes
+
+FILES CREATED:
+- tests/test_acceptance.py (20 tests)
+- scripts/validation/run_validation.py
+- docs/validation-report.md
+- data/validation/latest.json (gitignored)
+
+FILES MODIFIED:
+- docs/innovation-claims.md (#19 promoted, #23 status updated)
+- docs/phase-gate-log.md (this entry)
+
+TESTS:
+- .venv/Scripts/python -m pytest tests -q -> 145 passed
+  (125 prior + 20 acceptance)
+
+RESULTS (recorded run 2026-09-06, data/validation/latest.json):
+- SC-1 through SC-8: ALL PASS (see validation-report.md §2)
+- FR acceptance: 25/25 traced requirements validated (§3)
+- Claim #23: PARTIALLY VALIDATED — two honest gaps documented
+  (iceberg-ML tie on synthetic tracks; missing academic benchmark)
+- Test suite: 145/145 green (15 test modules)
+
+PROBLEMS:
+- PC7 is ice-locked before day 45 in the Bharati–Maitri corridor
+  (genuine data property: 40–45% navigable in December vs 55%+ in
+  January); SC-2 uses day 45 vs day 80 to show seasonal retreat
+- explain_recommendation expects comparison rows (with "route" key),
+  not raw plan_routes output; test initially passed wrong format
+
+DECISIONS:
+- Claim #23 honest assessment for judges: "individual components beat
+  baselines on real data; integrated improvement claim has two
+  documented gaps" — never oversell per Phase 0 §38
+- No fabricated positive results: where the system ties a baseline
+  (iceberg-ML) or lacks a benchmark (academic routes), the gap is
+  recorded, not hidden
+- Validation report is a standalone document (docs/validation-report.md)
+  for judges; the JSON evidence file is reproducible via the runner
+
+ASSUMPTIONS:
+- Feature store at data/processed/bharati_maitri_2019_20/features.nc
+  must be present for all acceptance tests
+- Synthetic iceberg tracks are labeled as such (FR-10)
+
+VALIDATION:
+- 20 acceptance tests encoding all 8 scenarios (SC-1..SC-8)
+- 145/145 full suite green
+- Validation runner produces reproducible evidence JSON
+- docs/validation-report.md structured for judge review
+
+PHASE GATE: PASS
+```
+
+---
+*Next: Phase 20 — Demo Mode. Requires team approval.*
