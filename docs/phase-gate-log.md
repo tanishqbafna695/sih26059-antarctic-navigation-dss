@@ -1677,3 +1677,62 @@ PHASE GATE: PASS
 
 ---
 *Next: Phase 21 — SIH Winning Strategy & Judge Defence. Requires team approval.*
+
+---
+
+## PHASE 21 — SIH WINNING STRATEGY & JUDGE DEFENCE
+
+```
+PHASE:     21 — SIH Winning Strategy & Judge Defence (final pitch,
+              competitive defences, claims re-verification, README)
+STATUS:    COMPLETE — all 22 phases delivered
+
+COMPLETED:
+- docs/judge-defence.md: structured judge defence document with 60-second
+  pitch, evidence tables, "Why not IcySea/PolarRoute/DESIDE" defences
+  (every claim backed by sources), innovation claims summary (24 rows),
+  key numbers for judges, honest limitations, demo checklist.
+- Innovation claims re-verified (§38 rule 3): all competitor claims
+  (#1–18) re-checked against current web material (2026-09-06).
+  IcySea route optimisation: DLR FAST-CAST 2 pilot (Oct 2024) — still
+  pilot stage. PolarRoute: BAS AI Lab testing (Nov 2022) — research-
+  stage. DESIDE: no new Antarctic material. Iceberg products: still
+  presence-based. No gap claims need updating.
+- docs/innovation-claims.md updated with re-verification note.
+- README.md rewritten for the public repo: quick-start, key results
+  table, full docs index, test suite instructions, zero-cost statement.
+
+INCOMPLETE:
+- Academic-route benchmark (Mishra et al. 2021) — documented gap
+- Iceberg-ML on real BYU/NIC tracks — documented gap
+- Free origin/destination in UI — API-ready, UI picker deferred
+
+FILES CREATED:
+- docs/judge-defence.md
+
+FILES MODIFIED:
+- README.md (final state with quick-start, results, docs index)
+- docs/innovation-claims.md (re-verification note)
+- docs/phase-gate-log.md (this entry)
+
+TESTS:
+- 145/145 green (unchanged)
+
+RESULTS:
+- All 22 phases gate-logged PASS
+- 25/25 FRs validated, SC-1 through SC-8 ALL PASS
+- Claim #23: PARTIALLY VALIDATED with honest gaps
+- Demo: 2.95s timing, fully offline, provenance tooltips
+- Judge defence: structured, evidence-backed, honest limitations
+
+DECISIONS:
+- Phase 21 is the final phase; the project is complete as a prototype
+- No oversell: the pitch states "decision-support prototype, not a
+  certified navigation system" in every section
+- Re-verification confirmed all gap claims are still accurate
+
+PHASE GATE: PASS
+```
+
+---
+*All 22 phases complete. Project ready for SIH submission.*

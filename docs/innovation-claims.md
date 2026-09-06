@@ -1,7 +1,7 @@
 # Innovation Claim Ledger — SIH26059
 
 **Phase:** 19 · **Promotions 2026-09-06:** claim #20 → EXPERIMENTALLY VALIDATED (Phase 12/13), claim #21 → EXPERIMENTALLY VALIDATED (Phase 15), claim #19 → EXPERIMENTALLY VALIDATED (Phase 10/18)
-**Last updated:** 2026-09-06 (Phase 19 audit)
+**Last updated:** 2026-09-06 (Phase 21 re-verification)
 
 Every claim about our system or about others is logged with a status class and evidence. **A claim is never promoted to a higher class without evidence.** Rules:
 - **VERIFIED** — supported by a primary source we read (operator statement, paper, official page).
@@ -57,3 +57,9 @@ Every claim about our system or about others is logged with a status class and e
 > Existing systems provide ice information (IcySea, Polar View), vessel-aware route computation (PolarRoute), and decision-enhancement products (DESIDE, Arctic/Baltic-led). None of the public material we reviewed demonstrates the full **Antarctic decision layer**: probabilistic forecasts — including iceberg trajectory probability, which operational iceberg products lack — converted into a vessel-specific hazard field, presented as competing route alternatives with quantified trade-offs, an explained recommendation, and dynamic re-routing. Our prototype implements and benchmarks that layer; it is a decision-support system, not a replacement for human navigators, and it is validated against documented baselines before any improvement is claimed.
 
 Sources: as listed in `docs/existing-solutions-gap.md` §7 (accessed 2026-09-04).
+**Re-verification (2026-09-06, Phase 21):** all competitor claims (#1–18) re-checked against current web material. Key findings:
+- IcySea route optimisation: DLR FAST-CAST 2 pilot project tested on Polarstern (Oct 2024) — still pilot stage, not the IcySea product. Claim #2 remains VERIFIED.
+- PolarRoute: BAS AI Lab testing on RRS Sir David Attenborough (Nov 2022 article) — research-stage, not public product. Claim #6 remains VERIFIED.
+- DESIDE: no new Antarctic-specific public material found. Claims #9–10 remain VERIFIED/INFERRED.
+- Operational iceberg products: still presence-based (Arctic Institute 2026 review). Claim #16 remains VERIFIED.
+No gap claims need updating.
