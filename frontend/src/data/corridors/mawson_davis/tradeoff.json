@@ -1,0 +1,158 @@
+{
+  "polar_class_pc7": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 90.8,
+          "fuel_liters": 42039.6,
+          "mean_hazard": 0.000349,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0848,
+          "mean_iceberg_hazard": 0.000494
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 90.5,
+          "fuel_liters": 40972.1,
+          "mean_hazard": 0.000362,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0468,
+          "mean_iceberg_hazard": 0.000391
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 89.8,
+          "fuel_liters": 41632.3,
+          "mean_hazard": 0.000387,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0677,
+          "mean_iceberg_hazard": 0.000136
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.11,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "fastest"
+      },
+      "safety_first": {
+        "recommended": "fastest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "polar_class_pc1": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 80.1,
+          "fuel_liters": 38020.9,
+          "mean_hazard": 0.000372,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0956,
+          "mean_iceberg_hazard": 0.000371
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 81.0,
+          "fuel_liters": 36987.1,
+          "mean_hazard": 0.000287,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0603,
+          "mean_iceberg_hazard": 0.00017
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 82.6,
+          "fuel_liters": 37496.1,
+          "mean_hazard": 0.000485,
+          "max_hazard": 0.0011155,
+          "ice_exposure_frac": 0.0667,
+          "mean_iceberg_hazard": 0.000236
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.08,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "safest"
+      },
+      "safety_first": {
+        "recommended": "safest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "open_water_rv": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 109.5,
+          "fuel_liters": 51489.8,
+          "mean_hazard": 0.000299,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0735,
+          "mean_iceberg_hazard": 0.000427
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 110.8,
+          "fuel_liters": 49329.7,
+          "mean_hazard": 0.000205,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0349,
+          "mean_iceberg_hazard": 0.000459
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 110.7,
+          "fuel_liters": 50278.9,
+          "mean_hazard": 0.000266,
+          "max_hazard": 0.001,
+          "ice_exposure_frac": 0.0524,
+          "mean_iceberg_hazard": 0.00039
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.12,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "safest"
+      },
+      "safety_first": {
+        "recommended": "safest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  }
+}

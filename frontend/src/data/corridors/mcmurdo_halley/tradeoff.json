@@ -1,0 +1,118 @@
+{
+  "polar_class_pc7": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 504.2,
+          "fuel_liters": 287725.1,
+          "mean_hazard": 0.001888,
+          "max_hazard": 0.0043424,
+          "ice_exposure_frac": 0.2309,
+          "mean_iceberg_hazard": 0.000339
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 520.4,
+          "fuel_liters": 270788.5,
+          "mean_hazard": 0.001039,
+          "max_hazard": 0.0023897,
+          "ice_exposure_frac": 0.1559,
+          "mean_iceberg_hazard": 0.00023
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 509.8,
+          "fuel_liters": 278671.3,
+          "mean_hazard": 0.001366,
+          "max_hazard": 0.0031417999999999997,
+          "ice_exposure_frac": 0.1861,
+          "mean_iceberg_hazard": 0.000212
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.1,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "safest"
+      },
+      "safety_first": {
+        "recommended": "safest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "polar_class_pc1": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 453.8,
+          "fuel_liters": 260803.8,
+          "mean_hazard": 0.001901,
+          "max_hazard": 0.004372299999999999,
+          "ice_exposure_frac": 0.2558,
+          "mean_iceberg_hazard": 0.000409
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 468.9,
+          "fuel_liters": 245280.5,
+          "mean_hazard": 0.001277,
+          "max_hazard": 0.0029370999999999998,
+          "ice_exposure_frac": 0.1862,
+          "mean_iceberg_hazard": 0.000392
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 463.5,
+          "fuel_liters": 252327.2,
+          "mean_hazard": 0.001406,
+          "max_hazard": 0.0032337999999999993,
+          "ice_exposure_frac": 0.2009,
+          "mean_iceberg_hazard": 0.000445
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.1,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "safest"
+      },
+      "safety_first": {
+        "recommended": "safest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "open_water_rv": {
+    "comparison": {
+      "routes_available": false,
+      "reason": "Open-water vessel exceeds safe operational range for this corridor (>5000 km through heavy ice)",
+      "rows": [],
+      "confidence": {
+        "overall_confidence": 0.0,
+        "status_label": "NO ROUTE"
+      }
+    },
+    "recommendations": {}
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "polar_class_pc7": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 290.6,
+          "fuel_liters": 155219.7,
+          "mean_hazard": 0.001046,
+          "max_hazard": 0.0024058,
+          "ice_exposure_frac": 0.107,
+          "mean_iceberg_hazard": 0.000162
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 290.5,
+          "fuel_liters": 153186.1,
+          "mean_hazard": 0.001033,
+          "max_hazard": 0.0023759,
+          "ice_exposure_frac": 0.08,
+          "mean_iceberg_hazard": 0.000383
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 289.9,
+          "fuel_liters": 154059.9,
+          "mean_hazard": 0.001026,
+          "max_hazard": 0.0023598,
+          "ice_exposure_frac": 0.0722,
+          "mean_iceberg_hazard": 0.000173
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.09,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "balanced"
+      },
+      "safety_first": {
+        "recommended": "balanced"
+      },
+      "time_first": {
+        "recommended": "balanced"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "polar_class_pc1": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 263.0,
+          "fuel_liters": 140284.2,
+          "mean_hazard": 0.00109,
+          "max_hazard": 0.002507,
+          "ice_exposure_frac": 0.1117,
+          "mean_iceberg_hazard": 0.000345
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 263.1,
+          "fuel_liters": 139017.5,
+          "mean_hazard": 0.001033,
+          "max_hazard": 0.0023759,
+          "ice_exposure_frac": 0.0852,
+          "mean_iceberg_hazard": 0.000414
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 263.2,
+          "fuel_liters": 139205.2,
+          "mean_hazard": 0.001078,
+          "max_hazard": 0.0024793999999999997,
+          "ice_exposure_frac": 0.077,
+          "mean_iceberg_hazard": 0.000343
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.09,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "safest"
+      },
+      "safety_first": {
+        "recommended": "safest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "open_water_rv": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 350.0,
+          "fuel_liters": 187461.4,
+          "mean_hazard": 0.000921,
+          "max_hazard": 0.0021183,
+          "ice_exposure_frac": 0.0931,
+          "mean_iceberg_hazard": 0.000222
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 351.1,
+          "fuel_liters": 185818.1,
+          "mean_hazard": 0.000783,
+          "max_hazard": 0.0018008999999999998,
+          "ice_exposure_frac": 0.057,
+          "mean_iceberg_hazard": 0.000298
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 350.7,
+          "fuel_liters": 185997.2,
+          "mean_hazard": 0.000746,
+          "max_hazard": 0.0017158,
+          "ice_exposure_frac": 0.0678,
+          "mean_iceberg_hazard": 0.000225
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.1,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "balanced"
+      },
+      "safety_first": {
+        "recommended": "balanced"
+      },
+      "time_first": {
+        "recommended": "balanced"
+      },
+      "fuel_saver": {
+        "recommended": "balanced"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "rerouteA": {
+    "outcome": "ADJUSTED",
+    "trigger": "New satellite observation at Day+50 shows ice retreat 12km ahead of forecast",
+    "change_text": "Previous course would enter 7/10 concentration ice.\nNew route shifts 15km north through detected open-water lead.\nETA impact: +2.3h.\nFuel impact: +890L (currents less favorable)."
+  },
+  "rerouteB": {
+    "outcome": "RE-ROUTE",
+    "trigger": "Iceberg SC-5 injected at Day+50 (synthetic test scenario)",
+    "change_text": "ASSUMED scenario: iceberg detected 45km ahead on planned track.\nPrevious course intersects 10nm danger buffer.\nNew route diverts 60km south, then rejoin at Day+70.\nETA impact: +18.4h.\nFuel impact: +12,400L."
+  }
+}

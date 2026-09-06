@@ -1,0 +1,158 @@
+{
+  "polar_class_pc7": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 232.6,
+          "fuel_liters": 129036.4,
+          "mean_hazard": 0.000813,
+          "max_hazard": 0.0018698999999999999,
+          "ice_exposure_frac": 0.1422,
+          "mean_iceberg_hazard": 0.000463
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 241.1,
+          "fuel_liters": 124410.4,
+          "mean_hazard": 0.000671,
+          "max_hazard": 0.0015433,
+          "ice_exposure_frac": 0.0926,
+          "mean_iceberg_hazard": 0.000131
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 238.0,
+          "fuel_liters": 125861.2,
+          "mean_hazard": 0.000796,
+          "max_hazard": 0.0018308,
+          "ice_exposure_frac": 0.1242,
+          "mean_iceberg_hazard": 0.000353
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.11,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "safest"
+      },
+      "safety_first": {
+        "recommended": "safest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "polar_class_pc1": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 213.7,
+          "fuel_liters": 116502.2,
+          "mean_hazard": 0.001016,
+          "max_hazard": 0.0023367999999999996,
+          "ice_exposure_frac": 0.1575,
+          "mean_iceberg_hazard": 0.000423
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 221.0,
+          "fuel_liters": 112646.1,
+          "mean_hazard": 0.000606,
+          "max_hazard": 0.0013938,
+          "ice_exposure_frac": 0.1027,
+          "mean_iceberg_hazard": 0.000271
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 217.7,
+          "fuel_liters": 114729.5,
+          "mean_hazard": 0.000685,
+          "max_hazard": 0.0015754999999999999,
+          "ice_exposure_frac": 0.1304,
+          "mean_iceberg_hazard": 0.000267
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.09,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "safest"
+      },
+      "safety_first": {
+        "recommended": "safest"
+      },
+      "time_first": {
+        "recommended": "safest"
+      },
+      "fuel_saver": {
+        "recommended": "safest"
+      }
+    }
+  },
+  "open_water_rv": {
+    "comparison": {
+      "routes_available": true,
+      "rows": [
+        {
+          "route": "fastest",
+          "travel_time_h": 281.8,
+          "fuel_liters": 155591.8,
+          "mean_hazard": 0.000792,
+          "max_hazard": 0.0018215999999999998,
+          "ice_exposure_frac": 0.114,
+          "mean_iceberg_hazard": 0.000308
+        },
+        {
+          "route": "safest",
+          "travel_time_h": 293.3,
+          "fuel_liters": 150301.1,
+          "mean_hazard": 0.000607,
+          "max_hazard": 0.0013961,
+          "ice_exposure_frac": 0.0904,
+          "mean_iceberg_hazard": 0.000201
+        },
+        {
+          "route": "balanced",
+          "travel_time_h": 288.5,
+          "fuel_liters": 152292.5,
+          "mean_hazard": 0.000545,
+          "max_hazard": 0.0012535,
+          "ice_exposure_frac": 0.0884,
+          "mean_iceberg_hazard": 0.000344
+        }
+      ],
+      "confidence": {
+        "overall_confidence": 0.1,
+        "status_label": "DEGRADED"
+      }
+    },
+    "recommendations": {
+      "balanced": {
+        "recommended": "balanced"
+      },
+      "safety_first": {
+        "recommended": "balanced"
+      },
+      "time_first": {
+        "recommended": "balanced"
+      },
+      "fuel_saver": {
+        "recommended": "balanced"
+      }
+    }
+  }
+}

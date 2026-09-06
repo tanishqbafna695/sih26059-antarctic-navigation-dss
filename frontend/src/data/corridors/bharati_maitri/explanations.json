@@ -1,0 +1,59 @@
+{
+  "polar_class_pc7": {
+    "explained": true,
+    "headline": "The Polar Class PC7 should take the safest route on the Bharati -> Maitri corridor.",
+    "strengths": [
+      "Lowest hazard score (0.0010)",
+      "Best ice avoidance (8.0% exposure)",
+      "Passes through known open-water leads"
+    ],
+    "prices": [
+      "+-0.1h vs fastest",
+      "+2034L vs cheapest fuel option"
+    ],
+    "vessel_statement": "The Polar Class PC7 (PC7) can transit this corridor within its structural limits.",
+    "confidence_note": "System confidence: 9% (DEGRADED).",
+    "caveats": [
+      "Sea-ice forecast based on persistence \u2014 may diverge from actual conditions",
+      "GLORYS12 ocean currents not yet assimilated; wind-driven fallback in use"
+    ]
+  },
+  "polar_class_pc1": {
+    "explained": true,
+    "headline": "The Icebreaker PC1 should take the safest route on the Bharati -> Maitri corridor.",
+    "strengths": [
+      "Lowest hazard score (0.0010)",
+      "Best ice avoidance (8.5% exposure)",
+      "Passes through known open-water leads"
+    ],
+    "prices": [
+      "+0.1h vs fastest",
+      "+1267L vs cheapest fuel option"
+    ],
+    "vessel_statement": "The Icebreaker PC1 (PC1) can transit this corridor within its structural limits.",
+    "confidence_note": "System confidence: 9% (DEGRADED).",
+    "caveats": [
+      "Sea-ice forecast based on persistence \u2014 may diverge from actual conditions",
+      "GLORYS12 ocean currents not yet assimilated; wind-driven fallback in use"
+    ]
+  },
+  "open_water_rv": {
+    "explained": true,
+    "headline": "The Open Water RV should take the safest route on the Bharati -> Maitri corridor.",
+    "strengths": [
+      "Lowest hazard score (0.0008)",
+      "Best ice avoidance (5.7% exposure)",
+      "Passes through known open-water leads"
+    ],
+    "prices": [
+      "+1.1h vs fastest",
+      "+1643L vs cheapest fuel option"
+    ],
+    "vessel_statement": "The Open Water RV (None) can transit this corridor within its structural limits.",
+    "confidence_note": "System confidence: 10% (DEGRADED).",
+    "caveats": [
+      "Sea-ice forecast based on persistence \u2014 may diverge from actual conditions",
+      "GLORYS12 ocean currents not yet assimilated; wind-driven fallback in use"
+    ]
+  }
+}

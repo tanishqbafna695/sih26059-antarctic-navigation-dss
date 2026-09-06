@@ -1,0 +1,44 @@
+{
+  "polar_class_pc7": {
+    "explained": true,
+    "headline": "The Polar Class PC7 should take the safest route on the McMurdo -> Halley VI corridor.",
+    "strengths": [
+      "Lowest hazard score (0.0010)",
+      "Best ice avoidance (15.6% exposure)",
+      "Passes through known open-water leads"
+    ],
+    "prices": [
+      "+16.2h vs fastest",
+      "+16937L vs cheapest fuel option"
+    ],
+    "vessel_statement": "The Polar Class PC7 (PC7) can transit this corridor within its structural limits.",
+    "confidence_note": "System confidence: 10% (DEGRADED).",
+    "caveats": [
+      "Sea-ice forecast based on persistence \u2014 may diverge from actual conditions",
+      "GLORYS12 ocean currents not yet assimilated; wind-driven fallback in use"
+    ]
+  },
+  "polar_class_pc1": {
+    "explained": true,
+    "headline": "The Icebreaker PC1 should take the safest route on the McMurdo -> Halley VI corridor.",
+    "strengths": [
+      "Lowest hazard score (0.0013)",
+      "Best ice avoidance (18.6% exposure)",
+      "Passes through known open-water leads"
+    ],
+    "prices": [
+      "+15.1h vs fastest",
+      "+15523L vs cheapest fuel option"
+    ],
+    "vessel_statement": "The Icebreaker PC1 (PC1) can transit this corridor within its structural limits.",
+    "confidence_note": "System confidence: 10% (DEGRADED).",
+    "caveats": [
+      "Sea-ice forecast based on persistence \u2014 may diverge from actual conditions",
+      "GLORYS12 ocean currents not yet assimilated; wind-driven fallback in use"
+    ]
+  },
+  "open_water_rv": {
+    "explained": false,
+    "reason": "No route found \u2014 vessel not rated for this corridor"
+  }
+}

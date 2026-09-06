@@ -1,0 +1,14 @@
+{
+  "depart_date": "2019-12-25",
+  "confidence": {
+    "overall_confidence": 0.11,
+    "status_label": "DEGRADED"
+  },
+  "ocean_source": "ERA5 wind-driven (GLORYS12 deferred)",
+  "sources": [
+    "OSI SAF SIC CDR (CC-BY-4.0)",
+    "ERA5 (Copernicus licence)",
+    "NCEP wind fields"
+  ],
+  "honesty": "This system does not guarantee safe passage. All routes require human review."
+}
