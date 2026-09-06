@@ -11,6 +11,10 @@ h5py>=3.11
 scikit-learn>=1.4
 pytest>=8.0
 Pillow>=10.0               # Phase 17 UI bundle: offline map PNG export (BSD-3-Clause, free)
+fastapi>=0.111              # Phase 18 REST API (MIT, free)
+uvicorn[standard]>=0.30    # Phase 18 ASGI server (BSD-3-Clause, free)
+sse-starlette>=2.0          # Phase 18 FR-35 server-sent events (MIT, free)
+httpx>=0.27                 # Phase 18 API TestClient (BSD-3-Clause, free)
 
 # Optional download clients (free accounts required; imported lazily by
 # backend/data_pipeline/fetch/ so the pipeline works without them):
