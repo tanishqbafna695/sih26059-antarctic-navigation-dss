@@ -2,6 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
+const STATION_MARKERS = [
+  { name: "Bharati", lon: 76.19, lat: -69.41, color: "#ffd166" },
+  { name: "Maitri", lon: 11.73, lat: -70.77, color: "#ff7d9c" },
+];
+
 export interface RouteLine {
   id: string;
   coords: number[][];
@@ -129,26 +134,7 @@ export default function MapView(props: MapViewProps) {
         paint: { "circle-color": ["get", "color"], "circle-radius": 7,
                  "circle-stroke-color": "#0b1220", "circle-stroke-width": 2 } });
 
-    // Station labels (text layer)
-    if (!map.getLayer("stations-label")) {
-      map.addLayer({
-        id: "stations-label",
-        type: "symbol",
-        source: "stations",
-        layout: {
-          "text-field": ["get", "name"],
-          "text-size": 13,
-          "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-          "text-offset": [0, 1.2],
-          "text-anchor": "top",
-        },
-        paint: {
-          "text-color": ["get", "color"],
-          "text-halo-color": "#0b1220",
-          "text-halo-width": 2,
-        },
-      });
-    }
+
 
     const bergVis = props.showBergs ? "visible" : "none";
     map.setLayoutProperty("bergs-buf-lyr", "visibility", bergVis);
@@ -212,35 +198,26 @@ export default function MapView(props: MapViewProps) {
     }
   });
 
-  // Build legend from visible lines
-  const visibleLines = props.lines.filter((l) => l.visible);
-  const legendItems = visibleLines.map((l) => ({
-    id: l.id, color: l.color, dashed: l.dashed,
-  }));
+  // Add HTML markers for station labels (avoids needing a glyphs service)
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    const markers: maplibregl.Marker[] = [];
+    for (const s of STATION_MARKERS) {
+      const el = document.createElement("div");
+      el.textContent = s.name;
+      el.style.cssText = `color:${s.color};font-size:12px;font-weight:700;text-shadow:0 0 6px #0b1220,0 0 3px #0b1220,1px 1px 2px #0b1220;white-space:nowrap;pointer-events:none;margin-top:14px;`;
+      const marker = new maplibregl.Marker({ element: el })
+        .setLngLat([s.lon, s.lat])
+        .addTo(map);
+      markers.push(marker);
+    }
+    return () => { for (const m of markers) m.remove(); };
+  }, [ready]);
 
   return (
     <div className="map-wrap">
-      <div ref={divRef} style={{ width: "100%", height: 460, borderRadius: 8, overflow: "hidden" }} />
-      <div className="legend">
-        {legendItems.map((l) => (
-          <span key={l.id} className="legend-item">
-            <span className="legend-line" style={{
-              background: l.dashed
-                ? `repeating-linear-gradient(90deg, ${l.color} 0 6px, transparent 6px 10px)`
-                : l.color,
-            }} />
-            {l.id}
-          </span>
-        ))}
-        <span className="legend-item">
-          <span className="legend-dot" style={{ background: "#ffd166" }} />
-          Bharati
-        </span>
-        <span className="legend-item">
-          <span className="legend-dot" style={{ background: "#ff7d9c" }} />
-          Maitri
-        </span>
-      </div>
+      <div ref={divRef} style={{ width: "100%", height: 520, borderRadius: 8, overflow: "hidden" }} />
     </div>
   );
 }
