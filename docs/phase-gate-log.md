@@ -1594,3 +1594,86 @@ PHASE GATE: PASS
 
 ---
 *Next: Phase 20 — Demo Mode. Requires team approval.*
+
+---
+
+## PHASE 20 — DEMO MODE
+
+```
+PHASE:     20 — Demo Mode (NFR-2 offline, NFR-3 < 2 min timing,
+              NFR-4 provenance tooltips, SC-1 operator workflow)
+STATUS:    COMPLETE (awaiting team approval to begin Phase 21)
+
+COMPLETED:
+- scripts/demo/start_demo.py: single-command launcher starting API +
+  UI servers, waiting for readiness, running smoke test, printing
+  operator workflow instructions. Fully offline (NFR-2).
+- scripts/demo/verify_timing.py: NFR-3 timing verifier executing the
+  full SC-1 operator story (load -> plan PC7 -> compare -> recommend ->
+  explain -> plan PC1 -> plan OW no-route -> reroute SC-5) in 2.95s
+  (NFR-3 limit: 120s). Supports --json for machine-readable output.
+- NFR-4 provenance tooltips: every number in the trade-off table
+  (time, fuel, risk, ice exposure) carries a hover tooltip citing
+  its computation source (Phase 10/11/12/14). Status tab items
+  carry source-specific tooltips (OSI SAF, ERA5, GLORYS12, Phase 9).
+  Explanation headline and strengths carry provenance tooltips.
+- docs/demo-workflow.md: structured operator workflow for judges,
+  architecture diagram, provenance table, honest limitations list.
+- Frontend verified: tsc --noEmit clean, npm build clean.
+
+INCOMPLETE:
+- Free origin/destination in the UI (arrived at API layer in Phase 18;
+  UI picker deferred to production).
+- Multi-season training data deployed to the UI (available in backend,
+  not yet wired to the frontend).
+
+FILES CREATED:
+- scripts/demo/{start_demo,verify_timing}.py
+- docs/demo-workflow.md
+
+FILES MODIFIED:
+- frontend/src/components/SidePanel.tsx (NFR-4 tooltips)
+- docs/phase-gate-log.md (this entry)
+
+TESTS:
+- .venv/Scripts/python -m pytest tests -q -> 145 passed
+- NFR-3 timing: 2.95s total (limit: 120s) — 40x under budget
+
+RESULTS (recorded run 2026-09-06):
+- NFR-2 OFFLINE: all endpoints work against bundled feature store,
+  zero network dependency
+- NFR-3 TIMING: full SC-1 story in 2.95s (load 0.19s + plan PC7
+  1.01s + plan PC1 0.92s + OW no-route 0.03s + reroute 0.80s)
+- NFR-4 PROVENANCE: every number in the UI has a hover tooltip
+  citing its computation source
+- SC-1 OPERATOR WORKFLOW: 10-step documented workflow completable
+  in ~30 seconds of operator actions
+- Demo architecture: React/MapLibre UI -> FastAPI API -> backend
+  modules -> real feature store (see demo-workflow.md §Architecture)
+
+PROBLEMS:
+- None (Phase 20 builds on verified Phases 17-19 infrastructure)
+
+DECISIONS:
+- Demo launcher starts both servers in one process for simplicity;
+  production would use systemd/Docker (out of scope per Phase 0
+  prototype constraint)
+- NFR-4 tooltips use native HTML title attributes (zero dependencies)
+  rather than a tooltip library; sufficient for the demo scope
+
+ASSUMPTIONS:
+- Node.js and npm are available for the Vite dev server
+- Feature store at data/processed/bharati_maitri_2019_20/features.nc
+  is present
+
+VALIDATION:
+- 145/145 tests green
+- NFR-3 timing verified: 2.95s << 120s limit
+- Frontend tsc + vite build clean
+- Demo workflow documented for judges
+
+PHASE GATE: PASS
+```
+
+---
+*Next: Phase 21 — SIH Winning Strategy & Judge Defence. Requires team approval.*
