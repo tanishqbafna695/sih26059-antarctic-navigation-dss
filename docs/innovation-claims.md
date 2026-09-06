@@ -1,6 +1,6 @@
 # Innovation Claim Ledger — SIH26059
 
-**Phase:** 1
+**Phase:** 1 (origin) · **Promotions 2026-09-06:** claim #20 → EXPERIMENTALLY VALIDATED (Phase 12/13 gates), claim #21 → EXPERIMENTALLY VALIDATED (Phase 15 gate)
 **Last updated:** 2026-09-04
 
 Every claim about our system or about others is logged with a status class and evidence. **A claim is never promoted to a higher class without evidence.** Rules:
@@ -35,10 +35,10 @@ Every claim about our system or about others is logged with a status class and e
 | 17 | Antarctic sea-ice has entered a possible regime of record-low extents, making navigation hazards more dynamic | VERIFIED | Purich & Doddridge 2023 via Arctic Institute review | Source 15 | Motivates the problem; also cited in project-definition risk register |
 | 18 | Antarctic maritime activity is growing (e.g., >120k Antarctic tourists in 2023–24 across 50+ vessels) | VERIFIED | IAATO report via Arctic Institute review | Source 15 | Stakeholder relevance for NCPOR/MoES |
 | 19 | Our system converts probabilistic environmental forecasts (incl. iceberg trajectory probability) into a unified vessel-specific hazard field H(x,t,v) with hard/soft constraints | PROPOSED | Project design | Project definition | To implement Phases 7–10 |
-| 20 | Our system generates competing route alternatives (Fastest / Safest / Balanced) with quantified safety/time/fuel trade-offs | PROPOSED | Project design | Project definition | To implement Phases 12–13 |
-| 21 | Our system explains its route recommendation in decision terms and recomputes it dynamically when conditions change | PROPOSED | Project design | Project definition | To implement Phases 14–15 |
+| 20 | Our system generates competing route alternatives (Fastest / Safest / Balanced) with quantified safety/time/fuel trade-offs | EXPERIMENTALLY VALIDATED | Phase 12 recorded run data/routing/latest.json (PC1 day-45: 3 routes + metrics + shortest-path baseline on the same ledger) + Phase 13 data/tradeoff/latest.json (comparison tables, priority-profile recommendations, sensitivity matrix) | Phase 12+13 gate logs | Routes + comparison + recommendation validated; narrative explanation is Phase 14 |
+| 21 | Our system explains its route recommendation in decision terms and recomputes it dynamically when conditions change | EXPERIMENTALLY VALIDATED | Phase 14 data/explanation/latest.json (template explanations, recorded) + Phase 15 data/rerouting/latest.json (control + SC-5 re-route notices with triggers and deltas) | Phase 14+15 gate logs | Validated on recorded offline scenarios; live-feed operation explicitly out of scope |
 | 22 | No surveyed public system offers the full integrated chain (probabilistic inputs → vessel hazard → multi-route trade-offs → explained recommendation → dynamic re-routing) for Antarctic operations | INFERRED | Review of six system categories (gap doc §3) | Gap analysis | Bounded by public material; our honest "gap" claim |
-| 23 | Our uncertainty-aware multi-route decision layer improves navigation decisions relative to baselines (shortest path, persistence, constant-drift, academic routes) | NOT YET VALIDATED | Hypothesis | Project design | Must be demonstrated with metrics in Phases 16/19 or withdrawn |
+| 23 | Our uncertainty-aware multi-route decision layer improves navigation decisions relative to baselines (shortest path, persistence, constant-drift, academic routes) | NOT YET VALIDATED | Partial: PC1 routes beat shortest-path on modeled time+risk+ice (Phase 12); seasonal beats persistence (Phase 6); 7/10 backtest matrix (Phase 16). Open: iceberg-ML vs constant-velocity on real tracks; academic-route benchmark | Project design + gate logs | Phase 16 position: partial wins recorded honestly; full claim still open — Phase 19 audit owns the call |
 | 24 | Our prototype is a decision-support system, not an autonomous or certified navigation system | VERIFIED (by definition of our scope) | Project definition §constraints | Project definition | Repeated in every demo/defence; never claim operational certification |
 
 ---

@@ -1,0 +1,44 @@
+{
+ "open_water_rv": {
+  "explained": false,
+  "reason": "no acceptable route found under current constraints",
+  "text": "No explanation: no acceptable route found under current constraints."
+ },
+ "polar_class_pc7": {
+  "explained": true,
+  "winner": "safest",
+  "profile": "balanced",
+  "headline": "Take the safest route: 291.9 h, 153,628 L, predicted risk 0.040 (chosen under balanced priorities)",
+  "strengths": [
+   "25.6% less ice exposure than the fastest route (7.8% of path vs 10.5% of path)"
+  ],
+  "prices": [
+   "extra time/fuel cost is negligible (all within 1%)"
+  ],
+  "vessel_statement": "Polar Class PC7 Vessel (PC7): advised path averages 7.8% ice-covered waters against a 60% operating limit; worst modeled cell hazard 0.177 (blocking threshold 1.0 -- violated cells are excluded by construction, never crossed)",
+  "confidence_note": "Route-set confidence 0.10 (DEGRADED) -- shared across all three options, not per-route precision",
+  "caveats": [
+   "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+  ],
+  "text": "Take the safest route: 291.9 h, 153,628 L, predicted risk 0.040 (chosen under balanced priorities)\n\nWhy this route:\n- 25.6% less ice exposure than the fastest route (7.8% of path vs 10.5% of path)\nThe price of this choice:\n- extra time/fuel cost is negligible (all within 1%)\n\nVessel fit: Polar Class PC7 Vessel (PC7): advised path averages 7.8% ice-covered waters against a 60% operating limit; worst modeled cell hazard 0.177 (blocking threshold 1.0 -- violated cells are excluded by construction, never crossed)\n\nConfidence: Route-set confidence 0.10 (DEGRADED) -- shared across all three options, not per-route precision\n- Caveat: route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase\n\nResearch prototype decision support: modeled risk, never a guarantee of safe navigation."
+ },
+ "polar_class_pc1": {
+  "explained": true,
+  "winner": "safest",
+  "profile": "balanced",
+  "headline": "Take the safest route: 222.0 h, 205,407 L, predicted risk 0.037 (chosen under balanced priorities)",
+  "strengths": [
+   "1.0% less fuel use than the fastest route (205,407 L vs 207,528 L)",
+   "8.4% less ice exposure than the fastest route (9.7% of path vs 10.6% of path)"
+  ],
+  "prices": [
+   "extra time/fuel cost is negligible (all within 1%)"
+  ],
+  "vessel_statement": "Heavy Polar Icebreaker PC1 (PC1): advised path averages 9.7% ice-covered waters against a 100% operating limit; worst modeled cell hazard 0.135 (blocking threshold 1.0 -- violated cells are excluded by construction, never crossed)",
+  "confidence_note": "Route-set confidence 0.10 (DEGRADED) -- shared across all three options, not per-route precision",
+  "caveats": [
+   "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+  ],
+  "text": "Take the safest route: 222.0 h, 205,407 L, predicted risk 0.037 (chosen under balanced priorities)\n\nWhy this route:\n- 1.0% less fuel use than the fastest route (205,407 L vs 207,528 L)\n- 8.4% less ice exposure than the fastest route (9.7% of path vs 10.6% of path)\nThe price of this choice:\n- extra time/fuel cost is negligible (all within 1%)\n\nVessel fit: Heavy Polar Icebreaker PC1 (PC1): advised path averages 9.7% ice-covered waters against a 100% operating limit; worst modeled cell hazard 0.135 (blocking threshold 1.0 -- violated cells are excluded by construction, never crossed)\n\nConfidence: Route-set confidence 0.10 (DEGRADED) -- shared across all three options, not per-route precision\n- Caveat: route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase\n\nResearch prototype decision support: modeled risk, never a guarantee of safe navigation."
+ }
+}

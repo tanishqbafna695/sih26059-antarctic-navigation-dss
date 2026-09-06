@@ -1,0 +1,1287 @@
+{
+ "open_water_rv": {
+  "comparison": {
+   "vessel_id": "open_water_rv",
+   "routes_available": false,
+   "reason": "no acceptable route found under current constraints",
+   "details": {
+    "blocked_fraction": 0.8601,
+    "nearest_reachable_km_to_goal": 2453.7,
+    "cells_expanded": 46
+   }
+  },
+  "recommendations": {
+   "balanced": {
+    "recommended": null,
+    "reason": "no acceptable route found under current constraints",
+    "profile": "balanced"
+   },
+   "safety_first": {
+    "recommended": null,
+    "reason": "no acceptable route found under current constraints",
+    "profile": "safety_first"
+   },
+   "time_first": {
+    "recommended": null,
+    "reason": "no acceptable route found under current constraints",
+    "profile": "time_first"
+   },
+   "fuel_saver": {
+    "recommended": null,
+    "reason": "no acceptable route found under current constraints",
+    "profile": "fuel_saver"
+   }
+  }
+ },
+ "polar_class_pc7": {
+  "comparison": {
+   "vessel_id": "polar_class_pc7",
+   "depart_date": "2020-01-15",
+   "routes_available": true,
+   "rows": [
+    {
+     "route": "fastest",
+     "origin": "multiobjective",
+     "travel_time_h": 291.14,
+     "fuel_liters": 154769.1,
+     "mean_hazard": 0.0413,
+     "max_hazard": 0.177,
+     "ice_exposure_frac": 0.1053,
+     "mean_iceberg_hazard": 0.0002,
+     "distance_km": 3218.3,
+     "n_cells": 115,
+     "confidence": 0.1,
+     "confidence_label": "DEGRADED",
+     "confidence_shared_across_routes": true
+    },
+    {
+     "route": "safest",
+     "origin": "multiobjective",
+     "travel_time_h": 291.85,
+     "fuel_liters": 153628.1,
+     "mean_hazard": 0.0397,
+     "max_hazard": 0.177,
+     "ice_exposure_frac": 0.0783,
+     "mean_iceberg_hazard": 0.0001,
+     "distance_km": 3233.1,
+     "n_cells": 116,
+     "confidence": 0.1,
+     "confidence_label": "DEGRADED",
+     "confidence_shared_across_routes": true
+    },
+    {
+     "route": "balanced",
+     "origin": "multiobjective",
+     "travel_time_h": 291.8,
+     "fuel_liters": 153590.2,
+     "mean_hazard": 0.0398,
+     "max_hazard": 0.177,
+     "ice_exposure_frac": 0.0783,
+     "mean_iceberg_hazard": 0.0001,
+     "distance_km": 3233.0,
+     "n_cells": 116,
+     "confidence": 0.1,
+     "confidence_label": "DEGRADED",
+     "confidence_shared_across_routes": true
+    }
+   ],
+   "baseline_included": false,
+   "confidence": {
+    "overall_confidence": 0.1,
+    "sea_ice_confidence": 0.1,
+    "iceberg_confidence": 0.1,
+    "forcing_confidence": 0.1,
+    "staleness_hours": 0.0,
+    "horizon_hours": 291.85,
+    "missing_inputs": [
+     "glorys12_ocean_current (wind-driven fallback active)"
+    ],
+    "provenance_sources": [
+     "OSI-SAF",
+     "ERA5",
+     "GLORYS12-fallback"
+    ],
+    "status_label": "DEGRADED"
+   }
+  },
+  "recommendations": {
+   "balanced": {
+    "recommended": "safest",
+    "profile": "balanced",
+    "profile_weights": {
+     "mean_hazard": 0.4,
+     "travel_time_h": 0.25,
+     "fuel_liters": 0.2,
+     "ice_exposure_frac": 0.1,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.75,
+     "safest": 0.25643,
+     "balanced": 0.257394
+    },
+    "deltas_vs_alternatives_pct": {
+     "fastest": {
+      "mean_hazard": -3.9,
+      "travel_time_h": 0.2,
+      "fuel_liters": -0.7,
+      "ice_exposure_frac": -25.6,
+      "mean_iceberg_hazard": -50.0
+     },
+     "balanced": {
+      "mean_hazard": -0.3,
+      "travel_time_h": 0.0,
+      "fuel_liters": 0.0,
+      "ice_exposure_frac": 0.0,
+      "mean_iceberg_hazard": 0.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0397,
+      "vs_route": "fastest",
+      "vs_value": 0.0413,
+      "delta_pct": -3.9,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.85,
+      "vs_route": "fastest",
+      "vs_value": 291.14,
+      "delta_pct": 0.2,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 153628.1,
+      "vs_route": "fastest",
+      "vs_value": 154769.1,
+      "delta_pct": -0.7,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "fastest",
+      "vs_value": 0.1053,
+      "delta_pct": -25.6,
+      "better": true
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "fastest",
+      "vs_value": 0.0002,
+      "delta_pct": -50.0,
+      "better": true
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0397,
+      "vs_route": "balanced",
+      "vs_value": 0.0398,
+      "delta_pct": -0.3,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.85,
+      "vs_route": "balanced",
+      "vs_value": 291.8,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 153628.1,
+      "vs_route": "balanced",
+      "vs_value": 153590.2,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "balanced",
+      "vs_value": 0.0783,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "balanced",
+      "vs_value": 0.0001,
+      "delta_pct": 0.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "fastest",
+      "vs_value": 0.0002,
+      "delta_pct": -50.0,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "fastest",
+      "vs_value": 0.1053,
+      "delta_pct": -25.6,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   },
+   "safety_first": {
+    "recommended": "safest",
+    "profile": "safety_first",
+    "profile_weights": {
+     "mean_hazard": 0.7,
+     "travel_time_h": 0.1,
+     "fuel_liters": 0.1,
+     "ice_exposure_frac": 0.05,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.9,
+     "safest": 0.103215,
+     "balanced": 0.136708
+    },
+    "deltas_vs_alternatives_pct": {
+     "fastest": {
+      "mean_hazard": -3.9,
+      "travel_time_h": 0.2,
+      "fuel_liters": -0.7,
+      "ice_exposure_frac": -25.6,
+      "mean_iceberg_hazard": -50.0
+     },
+     "balanced": {
+      "mean_hazard": -0.3,
+      "travel_time_h": 0.0,
+      "fuel_liters": 0.0,
+      "ice_exposure_frac": 0.0,
+      "mean_iceberg_hazard": 0.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0397,
+      "vs_route": "fastest",
+      "vs_value": 0.0413,
+      "delta_pct": -3.9,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.85,
+      "vs_route": "fastest",
+      "vs_value": 291.14,
+      "delta_pct": 0.2,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 153628.1,
+      "vs_route": "fastest",
+      "vs_value": 154769.1,
+      "delta_pct": -0.7,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "fastest",
+      "vs_value": 0.1053,
+      "delta_pct": -25.6,
+      "better": true
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "fastest",
+      "vs_value": 0.0002,
+      "delta_pct": -50.0,
+      "better": true
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0397,
+      "vs_route": "balanced",
+      "vs_value": 0.0398,
+      "delta_pct": -0.3,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.85,
+      "vs_route": "balanced",
+      "vs_value": 291.8,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 153628.1,
+      "vs_route": "balanced",
+      "vs_value": 153590.2,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "balanced",
+      "vs_value": 0.0783,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "balanced",
+      "vs_value": 0.0001,
+      "delta_pct": 0.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "fastest",
+      "vs_value": 0.0002,
+      "delta_pct": -50.0,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "fastest",
+      "vs_value": 0.1053,
+      "delta_pct": -25.6,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   },
+   "time_first": {
+    "recommended": "fastest",
+    "profile": "time_first",
+    "profile_weights": {
+     "mean_hazard": 0.1,
+     "travel_time_h": 0.7,
+     "fuel_liters": 0.1,
+     "ice_exposure_frac": 0.05,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.3,
+     "safest": 0.703215,
+     "balanced": 0.656954
+    },
+    "deltas_vs_alternatives_pct": {
+     "safest": {
+      "mean_hazard": 4.0,
+      "travel_time_h": -0.2,
+      "fuel_liters": 0.7,
+      "ice_exposure_frac": 34.5,
+      "mean_iceberg_hazard": 100.0
+     },
+     "balanced": {
+      "mean_hazard": 3.8,
+      "travel_time_h": -0.2,
+      "fuel_liters": 0.8,
+      "ice_exposure_frac": 34.5,
+      "mean_iceberg_hazard": 100.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0413,
+      "vs_route": "safest",
+      "vs_value": 0.0397,
+      "delta_pct": 4.0,
+      "better": false
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.14,
+      "vs_route": "safest",
+      "vs_value": 291.85,
+      "delta_pct": -0.2,
+      "better": true
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 154769.1,
+      "vs_route": "safest",
+      "vs_value": 153628.1,
+      "delta_pct": 0.7,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.1053,
+      "vs_route": "safest",
+      "vs_value": 0.0783,
+      "delta_pct": 34.5,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0002,
+      "vs_route": "safest",
+      "vs_value": 0.0001,
+      "delta_pct": 100.0,
+      "better": false
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0413,
+      "vs_route": "balanced",
+      "vs_value": 0.0398,
+      "delta_pct": 3.8,
+      "better": false
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.14,
+      "vs_route": "balanced",
+      "vs_value": 291.8,
+      "delta_pct": -0.2,
+      "better": true
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 154769.1,
+      "vs_route": "balanced",
+      "vs_value": 153590.2,
+      "delta_pct": 0.8,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.1053,
+      "vs_route": "balanced",
+      "vs_value": 0.0783,
+      "delta_pct": 34.5,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0002,
+      "vs_route": "balanced",
+      "vs_value": 0.0001,
+      "delta_pct": 100.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.14,
+      "vs_route": "safest",
+      "vs_value": 291.85,
+      "delta_pct": -0.2,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.14,
+      "vs_route": "balanced",
+      "vs_value": 291.8,
+      "delta_pct": -0.2,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   },
+   "fuel_saver": {
+    "recommended": "balanced",
+    "profile": "fuel_saver",
+    "profile_weights": {
+     "mean_hazard": 0.15,
+     "travel_time_h": 0.1,
+     "fuel_liters": 0.65,
+     "ice_exposure_frac": 0.05,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.9,
+     "safest": 0.120897,
+     "balanced": 0.102333
+    },
+    "deltas_vs_alternatives_pct": {
+     "fastest": {
+      "mean_hazard": -3.6,
+      "travel_time_h": 0.2,
+      "fuel_liters": -0.8,
+      "ice_exposure_frac": -25.6,
+      "mean_iceberg_hazard": -50.0
+     },
+     "safest": {
+      "mean_hazard": 0.3,
+      "travel_time_h": -0.0,
+      "fuel_liters": -0.0,
+      "ice_exposure_frac": 0.0,
+      "mean_iceberg_hazard": 0.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0398,
+      "vs_route": "fastest",
+      "vs_value": 0.0413,
+      "delta_pct": -3.6,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.8,
+      "vs_route": "fastest",
+      "vs_value": 291.14,
+      "delta_pct": 0.2,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 153590.2,
+      "vs_route": "fastest",
+      "vs_value": 154769.1,
+      "delta_pct": -0.8,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "fastest",
+      "vs_value": 0.1053,
+      "delta_pct": -25.6,
+      "better": true
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "fastest",
+      "vs_value": 0.0002,
+      "delta_pct": -50.0,
+      "better": true
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0398,
+      "vs_route": "safest",
+      "vs_value": 0.0397,
+      "delta_pct": 0.3,
+      "better": false
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 291.8,
+      "vs_route": "safest",
+      "vs_value": 291.85,
+      "delta_pct": -0.0,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 153590.2,
+      "vs_route": "safest",
+      "vs_value": 153628.1,
+      "delta_pct": -0.0,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "safest",
+      "vs_value": 0.0783,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "safest",
+      "vs_value": 0.0001,
+      "delta_pct": 0.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0001,
+      "vs_route": "fastest",
+      "vs_value": 0.0002,
+      "delta_pct": -50.0,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0783,
+      "vs_route": "fastest",
+      "vs_value": 0.1053,
+      "delta_pct": -25.6,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   }
+  }
+ },
+ "polar_class_pc1": {
+  "comparison": {
+   "vessel_id": "polar_class_pc1",
+   "depart_date": "2020-01-15",
+   "routes_available": true,
+   "rows": [
+    {
+     "route": "fastest",
+     "origin": "multiobjective",
+     "travel_time_h": 221.21,
+     "fuel_liters": 207527.6,
+     "mean_hazard": 0.0385,
+     "max_hazard": 0.1345,
+     "ice_exposure_frac": 0.1062,
+     "mean_iceberg_hazard": 0.0,
+     "distance_km": 3225.7,
+     "n_cells": 114,
+     "confidence": 0.1,
+     "confidence_label": "DEGRADED",
+     "confidence_shared_across_routes": true
+    },
+    {
+     "route": "safest",
+     "origin": "multiobjective",
+     "travel_time_h": 222.03,
+     "fuel_liters": 205406.7,
+     "mean_hazard": 0.0374,
+     "max_hazard": 0.1345,
+     "ice_exposure_frac": 0.0973,
+     "mean_iceberg_hazard": 0.0,
+     "distance_km": 3225.2,
+     "n_cells": 114,
+     "confidence": 0.1,
+     "confidence_label": "DEGRADED",
+     "confidence_shared_across_routes": true
+    },
+    {
+     "route": "balanced",
+     "origin": "multiobjective",
+     "travel_time_h": 221.98,
+     "fuel_liters": 205314.9,
+     "mean_hazard": 0.0376,
+     "max_hazard": 0.1345,
+     "ice_exposure_frac": 0.0973,
+     "mean_iceberg_hazard": 0.0,
+     "distance_km": 3225.0,
+     "n_cells": 114,
+     "confidence": 0.1,
+     "confidence_label": "DEGRADED",
+     "confidence_shared_across_routes": true
+    },
+    {
+     "route": "baseline_shortest_path",
+     "origin": "shortest_path_baseline",
+     "travel_time_h": 240.24,
+     "fuel_liters": 192502.4,
+     "mean_hazard": 0.0636,
+     "max_hazard": 0.2064,
+     "ice_exposure_frac": 0.2883,
+     "mean_iceberg_hazard": 0.0,
+     "distance_km": 3110.9,
+     "n_cells": 112,
+     "confidence": 0.1,
+     "confidence_label": "DEGRADED",
+     "confidence_shared_across_routes": true
+    }
+   ],
+   "baseline_included": true,
+   "confidence": {
+    "overall_confidence": 0.1,
+    "sea_ice_confidence": 0.1,
+    "iceberg_confidence": 0.1,
+    "forcing_confidence": 0.11187999999999998,
+    "staleness_hours": 0.0,
+    "horizon_hours": 222.03,
+    "missing_inputs": [
+     "glorys12_ocean_current (wind-driven fallback active)"
+    ],
+    "provenance_sources": [
+     "OSI-SAF",
+     "ERA5",
+     "GLORYS12-fallback"
+    ],
+    "status_label": "DEGRADED"
+   }
+  },
+  "recommendations": {
+   "balanced": {
+    "recommended": "safest",
+    "profile": "balanced",
+    "profile_weights": {
+     "mean_hazard": 0.4,
+     "travel_time_h": 0.25,
+     "fuel_liters": 0.2,
+     "ice_exposure_frac": 0.1,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.7,
+     "safest": 0.258298,
+     "balanced": 0.307483
+    },
+    "deltas_vs_alternatives_pct": {
+     "fastest": {
+      "mean_hazard": -2.9,
+      "travel_time_h": 0.4,
+      "fuel_liters": -1.0,
+      "ice_exposure_frac": -8.4,
+      "mean_iceberg_hazard": 0.0
+     },
+     "balanced": {
+      "mean_hazard": -0.5,
+      "travel_time_h": 0.0,
+      "fuel_liters": 0.0,
+      "ice_exposure_frac": 0.0,
+      "mean_iceberg_hazard": 0.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0374,
+      "vs_route": "fastest",
+      "vs_value": 0.0385,
+      "delta_pct": -2.9,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 222.03,
+      "vs_route": "fastest",
+      "vs_value": 221.21,
+      "delta_pct": 0.4,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 205406.7,
+      "vs_route": "fastest",
+      "vs_value": 207527.6,
+      "delta_pct": -1.0,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "fastest",
+      "vs_value": 0.1062,
+      "delta_pct": -8.4,
+      "better": true
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "fastest",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0374,
+      "vs_route": "balanced",
+      "vs_value": 0.0376,
+      "delta_pct": -0.5,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 222.03,
+      "vs_route": "balanced",
+      "vs_value": 221.98,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 205406.7,
+      "vs_route": "balanced",
+      "vs_value": 205314.9,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "balanced",
+      "vs_value": 0.0973,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "balanced",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "fastest",
+      "vs_value": 0.1062,
+      "delta_pct": -8.4,
+      "better": true
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0374,
+      "vs_route": "fastest",
+      "vs_value": 0.0385,
+      "delta_pct": -2.9,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   },
+   "safety_first": {
+    "recommended": "safest",
+    "profile": "safety_first",
+    "profile_weights": {
+     "mean_hazard": 0.7,
+     "travel_time_h": 0.1,
+     "fuel_liters": 0.1,
+     "ice_exposure_frac": 0.05,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.85,
+     "safest": 0.104149,
+     "balanced": 0.221175
+    },
+    "deltas_vs_alternatives_pct": {
+     "fastest": {
+      "mean_hazard": -2.9,
+      "travel_time_h": 0.4,
+      "fuel_liters": -1.0,
+      "ice_exposure_frac": -8.4,
+      "mean_iceberg_hazard": 0.0
+     },
+     "balanced": {
+      "mean_hazard": -0.5,
+      "travel_time_h": 0.0,
+      "fuel_liters": 0.0,
+      "ice_exposure_frac": 0.0,
+      "mean_iceberg_hazard": 0.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0374,
+      "vs_route": "fastest",
+      "vs_value": 0.0385,
+      "delta_pct": -2.9,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 222.03,
+      "vs_route": "fastest",
+      "vs_value": 221.21,
+      "delta_pct": 0.4,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 205406.7,
+      "vs_route": "fastest",
+      "vs_value": 207527.6,
+      "delta_pct": -1.0,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "fastest",
+      "vs_value": 0.1062,
+      "delta_pct": -8.4,
+      "better": true
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "fastest",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0374,
+      "vs_route": "balanced",
+      "vs_value": 0.0376,
+      "delta_pct": -0.5,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 222.03,
+      "vs_route": "balanced",
+      "vs_value": 221.98,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 205406.7,
+      "vs_route": "balanced",
+      "vs_value": 205314.9,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "balanced",
+      "vs_value": 0.0973,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "balanced",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "fastest",
+      "vs_value": 0.1062,
+      "delta_pct": -8.4,
+      "better": true
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0374,
+      "vs_route": "fastest",
+      "vs_value": 0.0385,
+      "delta_pct": -2.9,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   },
+   "time_first": {
+    "recommended": "fastest",
+    "profile": "time_first",
+    "profile_weights": {
+     "mean_hazard": 0.1,
+     "travel_time_h": 0.7,
+     "fuel_liters": 0.1,
+     "ice_exposure_frac": 0.05,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.25,
+     "safest": 0.704149,
+     "balanced": 0.675499
+    },
+    "deltas_vs_alternatives_pct": {
+     "safest": {
+      "mean_hazard": 2.9,
+      "travel_time_h": -0.4,
+      "fuel_liters": 1.0,
+      "ice_exposure_frac": 9.1,
+      "mean_iceberg_hazard": 0.0
+     },
+     "balanced": {
+      "mean_hazard": 2.4,
+      "travel_time_h": -0.3,
+      "fuel_liters": 1.1,
+      "ice_exposure_frac": 9.1,
+      "mean_iceberg_hazard": 0.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0385,
+      "vs_route": "safest",
+      "vs_value": 0.0374,
+      "delta_pct": 2.9,
+      "better": false
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 221.21,
+      "vs_route": "safest",
+      "vs_value": 222.03,
+      "delta_pct": -0.4,
+      "better": true
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 207527.6,
+      "vs_route": "safest",
+      "vs_value": 205406.7,
+      "delta_pct": 1.0,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.1062,
+      "vs_route": "safest",
+      "vs_value": 0.0973,
+      "delta_pct": 9.1,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "safest",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0385,
+      "vs_route": "balanced",
+      "vs_value": 0.0376,
+      "delta_pct": 2.4,
+      "better": false
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 221.21,
+      "vs_route": "balanced",
+      "vs_value": 221.98,
+      "delta_pct": -0.3,
+      "better": true
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 207527.6,
+      "vs_route": "balanced",
+      "vs_value": 205314.9,
+      "delta_pct": 1.1,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.1062,
+      "vs_route": "balanced",
+      "vs_value": 0.0973,
+      "delta_pct": 9.1,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "balanced",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "travel_time_h",
+      "winner_value": 221.21,
+      "vs_route": "safest",
+      "vs_value": 222.03,
+      "delta_pct": -0.4,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 221.21,
+      "vs_route": "balanced",
+      "vs_value": 221.98,
+      "delta_pct": -0.3,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   },
+   "fuel_saver": {
+    "recommended": "balanced",
+    "profile": "fuel_saver",
+    "profile_weights": {
+     "mean_hazard": 0.15,
+     "travel_time_h": 0.1,
+     "fuel_liters": 0.65,
+     "ice_exposure_frac": 0.05,
+     "mean_iceberg_hazard": 0.05
+    },
+    "scores": {
+     "fastest": 0.85,
+     "safest": 0.126967,
+     "balanced": 0.121175
+    },
+    "deltas_vs_alternatives_pct": {
+     "fastest": {
+      "mean_hazard": -2.3,
+      "travel_time_h": 0.3,
+      "fuel_liters": -1.1,
+      "ice_exposure_frac": -8.4,
+      "mean_iceberg_hazard": 0.0
+     },
+     "safest": {
+      "mean_hazard": 0.5,
+      "travel_time_h": -0.0,
+      "fuel_liters": -0.0,
+      "ice_exposure_frac": 0.0,
+      "mean_iceberg_hazard": 0.0
+     }
+    },
+    "reasons": [
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0376,
+      "vs_route": "fastest",
+      "vs_value": 0.0385,
+      "delta_pct": -2.3,
+      "better": true
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 221.98,
+      "vs_route": "fastest",
+      "vs_value": 221.21,
+      "delta_pct": 0.3,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 205314.9,
+      "vs_route": "fastest",
+      "vs_value": 207527.6,
+      "delta_pct": -1.1,
+      "better": true
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "fastest",
+      "vs_value": 0.1062,
+      "delta_pct": -8.4,
+      "better": true
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "fastest",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0376,
+      "vs_route": "safest",
+      "vs_value": 0.0374,
+      "delta_pct": 0.5,
+      "better": false
+     },
+     {
+      "metric": "travel_time_h",
+      "winner_value": 221.98,
+      "vs_route": "safest",
+      "vs_value": 222.03,
+      "delta_pct": -0.0,
+      "better": false
+     },
+     {
+      "metric": "fuel_liters",
+      "winner_value": 205314.9,
+      "vs_route": "safest",
+      "vs_value": 205406.7,
+      "delta_pct": -0.0,
+      "better": false
+     },
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "safest",
+      "vs_value": 0.0973,
+      "delta_pct": 0.0,
+      "better": false
+     },
+     {
+      "metric": "mean_iceberg_hazard",
+      "winner_value": 0.0,
+      "vs_route": "safest",
+      "vs_value": 0.0,
+      "delta_pct": 0.0,
+      "better": false
+     }
+    ],
+    "headline_improvements": [
+     {
+      "metric": "ice_exposure_frac",
+      "winner_value": 0.0973,
+      "vs_route": "fastest",
+      "vs_value": 0.1062,
+      "delta_pct": -8.4,
+      "better": true
+     },
+     {
+      "metric": "mean_hazard",
+      "winner_value": 0.0376,
+      "vs_route": "fastest",
+      "vs_value": 0.0385,
+      "delta_pct": -2.3,
+      "better": true
+     }
+    ],
+    "caveats": [
+     "route-set confidence is DEGRADED: recommendation uses mean hazard only; FR-14 uncertainty-aware re-ranking is not applied in this phase"
+    ],
+    "tied": false
+   }
+  }
+ }
+}

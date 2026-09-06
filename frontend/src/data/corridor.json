@@ -1,0 +1,23 @@
+{
+ "from": {
+  "name": "Bharati",
+  "lat": -69.41,
+  "lon": 76.19
+ },
+ "to": {
+  "name": "Maitri",
+  "lat": -70.77,
+  "lon": 11.73
+ },
+ "bbox": [
+  [
+   0.0,
+   -75.0
+  ],
+  [
+   95.0,
+   -55.0
+  ]
+ ],
+ "note": "Demo corridor is fixed in Phase 17; free origin/destination selection arrives with the Phase 18 API."
+}

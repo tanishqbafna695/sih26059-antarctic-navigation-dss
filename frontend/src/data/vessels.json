@@ -1,0 +1,14 @@
+{
+ "open_water_rv": {
+  "name": "Open Water RV",
+  "class": "Open Water"
+ },
+ "polar_class_pc7": {
+  "name": "Polar Class PC7",
+  "class": "PC7"
+ },
+ "polar_class_pc1": {
+  "name": "Icebreaker PC1",
+  "class": "PC1"
+ }
+}

@@ -1,0 +1,38 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  background: #0b1220; color: #dbe4f0; line-height: 1.5; }
+header { padding: 18px 22px 10px; border-bottom: 1px solid #1e2a44;
+  background: linear-gradient(180deg, #0e1830, #0b1220); }
+header h1 { margin: 0 0 4px; font-size: 20px; }
+header .sub { color: #8ea3c4; font-size: 13px; max-width: 1000px; }
+.controls { display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  padding: 12px 22px; border-bottom: 1px solid #1e2a44; font-size: 13px; }
+.controls label { display: flex; gap: 6px; align-items: center; color: #9db8e6; }
+.controls select { background: #0f1a2e; color: #e8f0ff; border: 1px solid #2c4c88;
+  border-radius: 6px; padding: 4px 8px; font-size: 13px; }
+.controls .chk { cursor: pointer; color: #dbe4f0; }
+.dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+main { padding: 16px 22px; display: grid; gap: 16px;
+  grid-template-columns: minmax(420px, 1.2fr) 1fr; }
+@media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
+.card { background: #0f1a2e; border: 1px solid #1e2a44; border-radius: 10px;
+  padding: 14px 16px; }
+.tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+.tabs button { background: #131f36; color: #9db8e6; border: 1px solid #1e2a44;
+  border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: 13px; }
+.tabs button.active { background: #1d3a6e; color: #fff; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: right; padding: 5px 8px; border-bottom: 1px solid #1a2740; }
+th:first-child, td:first-child { text-align: left; }
+th { color: #7d93b8; font-weight: 500; font-size: 12px; }
+tr.winner td { background: #14301f; font-weight: 600; }
+ul { padding-left: 20px; font-size: 13.5px; }
+.plain { font-size: 13px; color: #9db8e6; }
+.warn { background: #2a2113; border: 1px solid #6b5518; border-radius: 8px;
+  padding: 10px 12px; font-size: 13px; }
+.notice { background: #13283f; border: 1px solid #2c4c88; border-radius: 8px;
+  padding: 10px 12px; font-size: 13px; margin-top: 10px; }
+.notice pre { white-space: pre-wrap; font-size: 12px; color: #bcd0ef; }
+.note { font-size: 11px; color: #687ea4; margin-top: 8px; }
+.foot { padding: 10px 22px 20px; font-size: 11px; color: #56698d; }

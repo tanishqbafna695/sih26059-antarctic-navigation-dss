@@ -1,0 +1,14 @@
+{
+ "rerouteA": {
+  "outcome": "ADJUSTED",
+  "trigger": "no change above configured thresholds",
+  "change_text": "Recommendation holds: safest remains advised after no change above configured thresholds\n- travel time lower by 0.1% (172.59 -> 172.49)\n- fuel use higher by 0.2% (99913.0 -> 100095.6)\n- predicted risk lower by 1.1% (0.0276 -> 0.0273)\n\nResearch prototype decision support: modeled risk, never a guarantee of safe navigation.",
+  "new_headline": "Take the safest route: 172.5 h, 100,096 L, predicted risk 0.027 (chosen under balanced priorities)"
+ },
+ "rerouteB": {
+  "outcome": "ADJUSTED",
+  "trigger": "1 new iceberg fix(es) appeared; iceberg-danger jump 0.999 on remaining path >= 0.02",
+  "change_text": "Recommendation holds: safest remains advised after 1 new iceberg fix(es) appeared; iceberg-danger jump 0.999 on remaining path >= 0.02\n- travel time higher by 0.2% (172.59 -> 172.91)\n- fuel use lower by 0.3% (99913.0 -> 99621.8)\n- predicted risk lower by 15.0% (0.0346 -> 0.0294)\n\nResearch prototype decision support: modeled risk, never a guarantee of safe navigation.",
+  "new_headline": "Take the safest route: 172.9 h, 99,622 L, predicted risk 0.029 (chosen under balanced priorities)"
+ }
+}

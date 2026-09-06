@@ -1,0 +1,27 @@
+{
+ "depart_date": "2020-01-15",
+ "confidence": {
+  "overall_confidence": 0.1,
+  "sea_ice_confidence": 0.1,
+  "iceberg_confidence": 0.1,
+  "forcing_confidence": 0.1,
+  "staleness_hours": 0.0,
+  "horizon_hours": 291.85,
+  "missing_inputs": [
+   "glorys12_ocean_current (wind-driven fallback active)"
+  ],
+  "provenance_sources": [
+   "OSI-SAF",
+   "ERA5",
+   "GLORYS12-fallback"
+  ],
+  "status_label": "DEGRADED"
+ },
+ "ocean_source": "wind_driven_estimate",
+ "sources": [
+  "OSI SAF SIC (CC-BY-4.0)",
+  "ERA5 (Copernicus licence)",
+  "GLORYS12 fallback: wind-driven estimate (documented gap)"
+ ],
+ "honesty": "Research prototype decision support. Modeled risk is not a guarantee of safe navigation."
+}
