@@ -1288,6 +1288,117 @@ PHASE GATE: PASS
 ---
 *Next: Phase 17 — User Interface. Requires team approval.*
 
+---
+
+## PHASE 17 — USER INTERFACE
+
+```
+PHASE:     17 — User Interface (FR-37 MapLibre map, FR-38 panels,
+              FR-39 controls, FR-34 deterministic offline demo)
+STATUS:    COMPLETE (awaiting team approval to begin Phase 18)
+
+COMPLETED:
+- frontend/ offline demo (React 18 + TypeScript + Vite 5 + MapLibre GL
+  4.7.1, zero external network deps): map renders real OSI SAF ice PNGs
+  (ice_45/50/65/70.png), PC7 day-45 hazard overlay, assumed-demo iceberg
+  danger buffers + fixes, Bharati/Maitri stations, and route lines per
+  option with independent toggles; old-course grey dashed overlay in
+  re-route views (FR-37)
+- SidePanel: Routes table (time/fuel/risk/ice-exposure + winner star,
+  OUT-4), "Why this advice" (OUT-5 headline + strengths + prices +
+  vessel-fit + confidence + caveats), "Data status" (OUT-7: departure
+  date, confidence, ocean-current source, source list, honesty note)
+  (FR-38)
+- Controls: vessel select (Open Water RV / PC7 / PC1), View select
+  (Plan / Update A / Update B), priorities select (balanced /
+  safety_first / time_first / fuel_saver) driving a LIVE re-scoring that
+  must match the recorded engine output (parity note shown), ice /
+  hazard / icebergs / per-route visibility checkboxes (FR-39)
+- scripts/ui/export_bundle.py: reproducible bundle export from RECORDED
+  reports (routing/tradeoff/explanation/rerouting latest.json + real
+  feature store grid) into frontend/src/data/ (vessels, corridor, routes,
+  tradeoff, explanations, notices, status, bergs, ice/hazard PNGs
+  reprojected EPSG:3412 -> lon/lat plate-carree)
+- frontend/src/lib/scoring.ts: duplicated priority scoring for the live
+  recomputation parity check (weights copied from backend tradeoff
+  recommend.py; parity is asserted, never assumed)
+
+INCOMPLETE:
+- Free origin/destination selection (corridor fixed in this phase;
+  arrives with the Phase 18 API per FR-39 scope note)
+- API-driven data (bundle is static exports; Phase 18 wires the FastAPI
+  endpoints FR-33/FR-35 to the same recorded artifacts)
+
+FILES CREATED:
+- frontend/{index.html,package.json,package-lock.json,tsconfig.json,
+  vite.config.ts}, frontend/src/{App,main,styles}.{tsx,ts,css},
+  frontend/src/components/{MapView,SidePanel}.tsx,
+  frontend/src/lib/{scoring,types}.ts, frontend/src/data/* (12 bundle
+  files incl. 5 PNGs)
+- scripts/ui/export_bundle.py
+
+FILES MODIFIED:
+- requirements.txt (Pillow for PNG export), .gitignore
+  (frontend/node_modules/, frontend/dist/), docs/phase-gate-log.md (this
+  entry)
+
+TESTS:
+- npm run build (tsc --noEmit + vite build) -> clean, zero TS errors
+- Python suite unchanged at 111/111
+- Live verification in this session (vite dev server): map canvas
+  painted, vessel switch updates route table to recorded PC1 numbers,
+  Open Water RV shows the no-route honesty message, Update B shows the
+  re-route notice with trigger + new-advice overlay, all three tabs
+  populated, parity note "matches recorded engine output", no console
+  errors
+
+RESULTS (recorded run 2026-09-06, bundle committed under
+frontend/src/data/, rebuildable via scripts/ui/export_bundle.py):
+- Plan view PC7 (depart 2020-01-15): fastest 291.1 h / risk 0.041 /
+  ice 10.5%; safest 291.9 h / 0.040 / 7.8% (winner under balanced);
+  balanced 291.8 h / 0.040 / 7.8% - matches recorded Phase 12/13 numbers
+- PC1: fastest 221.2 h / 0.038 / 10.6%; safest 222.0 h / 0.037 /
+  9.7% - matches recorded runs
+- Open Water RV: no route (honest reason surfaced in the Routes panel)
+- Re-route views: grey dashes = previous remaining course, green = new
+  advice; Update A control (ADJUSTED), Update B iceberg-alarm trigger
+  with danger jump 0.999 on the remaining path
+- Every figure in the bundle traces to a recorded report or the feature
+  store; PNGs reprojected so MapLibre overlays them exactly
+
+PROBLEMS:
+- maplibre-gl 4.7.1 does not export LinePaint as a namespace member
+  (TS2694) -> route lines added via inline layer literal that TS narrows
+  against LineLayerSpecification; npm run build green (fixed this session)
+- Static JSON imports in TSX need explicit index signatures on the
+  bundle shapes (noImplicitAny) -> cast via unknown; documented in code
+
+DECISIONS:
+- Demo is fully offline (no tile servers/fonts/CDN; FR-34) - every layer
+  from the local bundle so the demo works with zero network at judging
+- Priority-scoring parity check lives in the UI: live recomputation must
+  match the recorded engine output and says so visibly when it does
+  (never hides a mismatch)
+- Corridor fixed for this phase (free endpoints arrive with the API in
+  Phase 18, FR-39 note); attribution footer per Phase 3 data strategy
+
+ASSUMPTIONS:
+- Vessel limits/registry shown are the modeled registry values (FR-19
+  flagged as modeled in earlier phases)
+- PNG reprojection (linear griddata resample at 0.25 deg) is display
+  fidelity only; all numbers remain from recorded grid runs
+
+VALIDATION:
+- npm build clean + live interactive verification of every control and
+  panel in this session; parity note confirms UI scoring matches the
+  backend engine on recorded data. Full Python suite 111/111 unchanged.
+
+PHASE GATE: PASS
+```
+
+---
+*Next: Phase 18 — End-to-End Integration & API. Requires team approval.*
+
 
 
 
